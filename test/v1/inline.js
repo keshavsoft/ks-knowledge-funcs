@@ -17,7 +17,7 @@ const form = document.createElement("ks-wrapper-base");
 form.config = {
     head: {
         isControl: true,
-        text: "User Registration",
+        text: "Item Name",
         theme: "",
         controlType: "label"
     },
@@ -30,7 +30,7 @@ form.config = {
     },
     foot: {
         isControl: true,
-        text: "save",
+        text: "Save",
         theme: "",
         controlType: "button",
         class: "px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
