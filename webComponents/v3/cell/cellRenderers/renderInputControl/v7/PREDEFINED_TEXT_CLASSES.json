@@ -1,0 +1,50 @@
+{
+    "default": "text-gray-700 text-sm whitespace-nowrap",
+    "tableCellStandard": "-----px-4 py-3 whitespace-nowrap text-sm text-gray-700",
+    "tableCellCompact": "px-3 py-2 whitespace-nowrap text-xs text-gray-700",
+    "tableCellExtraCompact": "px-2 py-1.5 whitespace-nowrap text-[11px] text-gray-700",
+    "tableCellLarge": "px-4 py-3 whitespace-nowrap text-xl text-gray-700",
+    "tableCellExtraLarge": "px-4 py-3 whitespace-nowrap text-3xl text-gray-700",
+    "tableCellCompactMinimal": "px-4 py-3 whitespace-nowrap text-sm text-gray-700",
+    "tableCellStandardMinimal": "px-4 py-3.5 whitespace-nowrap text-base text-gray-700",
+    "tableCellSpaciousMinimal": "px-5 py-4 whitespace-nowrap text-lg text-gray-700",
+    "table": {
+        "head": {
+            "cell": "px-4 py-3 whitespace-nowrap text-sm font-semibold text-gray-800 bg-gray-50 border-b",
+            "centered": "px-4 py-3 whitespace-nowrap text-sm font-semibold text-gray-800 bg-gray-50 border-b text-center",
+            "right": "px-4 py-3 whitespace-nowrap text-sm font-semibold text-gray-800 bg-gray-50 border-b text-right"
+        },
+        "foot": {
+            "cell": "px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-700 bg-gray-50 border-t",
+            "total": "px-4 py-3 whitespace-nowrap text-base font-bold text-gray-900 bg-gray-100 border-t-2"
+        },
+        "cell": {
+            "primary": "px-4 py-3 whitespace-nowrap text-sm font-semibold text-blue-600",
+            "primarySmall": "px-3 py-2 whitespace-nowrap text-xs font-semibold text-blue-600",
+            "danger": "px-4 py-3 whitespace-nowrap text-sm font-bold text-red-600",
+            "dangerSmall": "px-3 py-2 whitespace-nowrap text-xs font-bold text-red-600",
+            "success": "px-4 py-3 whitespace-nowrap text-sm font-medium text-green-600",
+            "successSmall": "px-3 py-2 whitespace-nowrap text-xs font-medium text-green-600",
+            "muted": "px-4 py-3 whitespace-nowrap text-sm italic text-gray-400",
+            "mutedSmall": "px-3 py-2 whitespace-nowrap text-xs italic text-gray-400",
+            "numeric": "px-4 py-3 whitespace-nowrap text-sm text-gray-700 font-mono text-right tabular-nums",
+            "monospace": "px-4 py-3 whitespace-nowrap text-sm text-gray-700 font-mono",
+            "serif": "px-4 py-3 whitespace-nowrap text-sm text-gray-700 font-serif",
+            "light": "px-4 py-3 whitespace-nowrap text-sm text-gray-700 font-light",
+            "bold": "px-4 py-3 whitespace-nowrap text-sm text-gray-900 font-bold",
+            "centered": "px-4 py-3 whitespace-nowrap text-sm text-gray-700 text-center",
+            "right": "px-4 py-3 whitespace-nowrap text-sm text-gray-700 text-right",
+            "highlight": "px-4 py-3 whitespace-nowrap text-sm text-yellow-900 bg-yellow-50 font-medium"
+        }
+    },
+    "vertical": {
+        "text": {
+            "standard": "py-2 text-sm text-gray-700 block",
+            "primary": "py-2 text-sm font-semibold text-blue-600 block",
+            "danger": "py-2 text-sm font-bold text-red-600 block",
+            "success": "py-2 text-sm font-medium text-green-600 block",
+            "muted": "py-2 text-sm italic text-gray-400 block",
+            "largeBold": "py-2 text-lg font-extrabold text-gray-900 block"
+        }
+    }
+}
