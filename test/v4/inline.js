@@ -13,7 +13,8 @@ const formSchema = columns.map(column => ({
         isControl: true,
         value1: "body",
         theme: "light-sm",
-        controlType: "input"
+        controlType: "input",
+        "ks-enter-as-tab": true
     }
 }));
 
