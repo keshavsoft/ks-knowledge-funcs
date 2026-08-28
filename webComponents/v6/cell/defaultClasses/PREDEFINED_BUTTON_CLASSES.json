@@ -1,0 +1,29 @@
+{
+    "default": "bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-md transition duration-150 shadow-sm cursor-pointer",
+    "verticalStandard": "bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-md transition duration-150 shadow-sm cursor-pointer",
+    "verticalHorizontalLabel": "bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg transition duration-150 cursor-pointer whitespace-nowrap",
+    "verticalHorizontalLabelAligned": "bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-3 py-1 rounded transition duration-150 cursor-pointer whitespace-nowrap w-full",
+    "verticalNoLabel": "bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-4 py-2 rounded shadow cursor-pointer whitespace-nowrap",
+    "verticalLargeText": "bg-black hover:bg-gray-800 text-white font-bold px-6 py-4 rounded-xl text-xl transition cursor-pointer whitespace-nowrap",
+    "table": {
+        "cell": {
+            "primary": "bg-blue-600 hover:bg-blue-700 text-white font-medium px-3 py-1.5 text-xs rounded transition duration-150 shadow-sm cursor-pointer",
+            "danger": "bg-red-600 hover:bg-red-700 text-white font-medium px-3 py-1.5 text-xs rounded transition duration-150 shadow-sm cursor-pointer",
+            "success": "bg-green-600 hover:bg-green-700 text-white font-medium px-3 py-1.5 text-xs rounded transition duration-150 shadow-sm cursor-pointer",
+            "outline": "border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium px-3 py-1.5 text-xs rounded transition duration-150 shadow-sm cursor-pointer bg-white",
+            "ghost": "text-gray-600 hover:bg-gray-100 hover:text-gray-900 font-medium px-3 py-1.5 text-xs rounded transition duration-150 cursor-pointer"
+        },
+        "foot": {
+            "primary": "bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 text-sm rounded transition duration-150 shadow-sm cursor-pointer",
+            "outline": "border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium px-4 py-2 text-sm rounded transition duration-150 shadow-sm cursor-pointer bg-white",
+            "success": "bg-green-600 hover:bg-green-700 text-white font-medium px-4 py-2 text-sm rounded transition duration-150 shadow-sm cursor-pointer"
+        }
+    },
+    "vertical": {
+        "standard": {
+            "primary": "bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-md transition duration-150 shadow-sm cursor-pointer w-full mt-2",
+            "danger": "bg-red-600 hover:bg-red-700 text-white font-medium px-4 py-2 rounded-md transition duration-150 shadow-sm cursor-pointer w-full mt-2",
+            "outline": "border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium px-4 py-2 rounded-md transition duration-150 shadow-sm cursor-pointer bg-white w-full mt-2"
+        }
+    }
+}
