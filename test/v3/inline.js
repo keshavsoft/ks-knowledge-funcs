@@ -41,6 +41,22 @@ form.config = {
         theme: "light-sm",
         controlType: "input",
         columns: formSchema
+    }
+};
+
+form.config1 = {
+    head: {
+        isControl: true,
+        text: "Item Name",
+        theme: "dark-bold",
+        controlType: "label"
+    },
+    body: {
+        isControl: true,
+        value1: "body",
+        theme: "light-sm",
+        controlType: "input",
+        columns: formSchema
     },
     foot: {
         isArray: true,

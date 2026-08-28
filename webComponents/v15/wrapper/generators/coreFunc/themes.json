@@ -1,0 +1,4 @@
+{
+    "stacked": "flex flex-col w-full",
+    "inline": "flex flex-row items-center flex-wrap gap-4 w-full"
+}
