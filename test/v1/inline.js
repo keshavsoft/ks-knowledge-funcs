@@ -15,6 +15,17 @@ const form = document.createElement("ks-wrapper-base");
 
 // Pass a single configuration object mimicking the JSON structure
 form.config = {
+    foot: {
+        isControl: true,
+        text: "Save",
+        theme: "",
+        controlType: "button",
+        theme: "dark",
+        class1: "px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+    }
+};
+
+form.config1 = {
     head: {
         isControl: true,
         text: "Item Name",
@@ -33,11 +44,12 @@ form.config = {
         text: "Save",
         theme: "",
         controlType: "button",
-        class: "px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+        theme: "dark",
+        class1: "px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
     }
 };
-
 // Set the card theme
 form.setAttribute("ks-theme", "inline");
+// form.setAttribute("ks-theme", "stacked");
 
 inLineDivId.appendChild(form);
