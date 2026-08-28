@@ -12,15 +12,15 @@ class KsTableCellContent extends HTMLElement {
     };
 
     render() {
-        const ksAttributes = pullAttributes(this);
-        const controlElement = renderAttributeControl(ksAttributes);
-        console.log("jjjjjjjj : ", ksAttributes, this._config);
+        const finalConfig = pullAttributes(this);
+        const controlElement = renderAttributeControl(finalConfig);
+        // console.log("finalConfig : ", finalConfig);
 
         if (controlElement) {
-            this.appendChild(controlElement);
+            this.replaceChildren(controlElement);
         };
 
-        return ksAttributes;
+        return finalConfig;
     };
 };
 

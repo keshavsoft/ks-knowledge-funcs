@@ -3,7 +3,7 @@ import { attachEvents } from "./attachEvents.js";
 
 export const renderInput = (ksAttributes) => {
     const input = document.createElement("input");
-    console.log("ksAttributes : ", ksAttributes);
+    // console.log("ksAttributes : ", ksAttributes);
 
     input.type = ksAttributes["type"] || "text";
     input.value = ksAttributes["value"] || "";

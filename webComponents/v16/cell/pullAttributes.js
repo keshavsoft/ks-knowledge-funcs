@@ -1,59 +1,40 @@
-const expectedAttributes = {
-    "aria-described-by": "",
-    "aria-label": "",
-    "autocomplete": "",
-    "autofocus": "",
-    "checked": "",
-    "class": "",
-    "class-name": "",
-    "control-type": "",
-    "data-key": "",
-    "dir": "",
-    "disabled": "",
-    "for": "",
-    "form": "",
-    "form-action": "",
-    "form-enctype": "",
-    "form-method": "",
-    "form-no-validate": "",
-    "form-target": "",
-    "id": "",
-    "text": "",
-    "value": "",
-    "list": "",
-    "max": "",
-    "max-length": "",
-    "min": "",
-    "min-length": "",
-    "multiple": "",
-    "name": "",
-    "pattern": "",
-    "place-holder": "",
-    "read-only": "",
-    "readonly": "",
-    "required": "",
-    "role": "",
-    "size": "",
-    "spellcheck": "",
-    "step": "",
-    "tab-index": "",
-    "title": "",
-    "type": "",
-    "theme": "",
-    "enter-as-tab": ""
-};
+// Stage 1: Pull inline attributes starting with ks-
+export const pullInlineAttributes = ({ inContext }) => {
+    const localContext = inContext;
+    const localAttributes = {};
 
-const startFunc = (instance) => {
-    const ksAttributes = {};
+    if (!localContext || !localContext.attributes) return localAttributes;
 
-    for (const key in expectedAttributes) {
-        const attrName = `ks-${key}`;
-        if (instance.hasAttribute(attrName)) {
-            ksAttributes[key] = instance.getAttribute(attrName);
+    for (const attr of localContext.attributes) {
+        if (attr.name.startsWith("ks-")) {
+            const key = attr.name.slice(3); // Remove "ks-" prefix
+            localAttributes[key] = attr.value;
         }
-    };
+    }
 
-    return ksAttributes;
+    return localAttributes;
 };
 
-export default startFunc;
+// Stage 2: Capture JS config object as-is
+export const captureJsConfig = ({ inContext }) => {
+    const localContext = inContext;
+    if (!localContext) return {};
+
+    return localContext.config || localContext._config || {};
+};
+
+// Stage 3: Merge both into Single Source of Truth at one central place
+export const resolveConfiguration = ({ inContext }) => {
+    const localContext = inContext;
+
+    const localAttributeConfig = pullInlineAttributes({ inContext: localContext });
+    const localJsConfig = captureJsConfig({ inContext: localContext });
+
+    // Merged single source of truth object
+    return {
+        ...localAttributeConfig,
+        ...localJsConfig
+    };
+};
+
+export default (instance) => resolveConfiguration({ inContext: instance });
