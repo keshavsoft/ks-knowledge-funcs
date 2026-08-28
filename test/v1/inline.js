@@ -16,19 +16,24 @@ const form = document.createElement("ks-wrapper-base");
 // Pass a single configuration object mimicking the JSON structure
 form.config = {
     head: {
-        showLabel: "User Registration",
-        theme: ""
+        isControl: true,
+        text: "User Registration",
+        theme: "",
+        controlType: "label"
     },
     body: {
-        columns: formSchema,
-        theme: ""
+        isControl: true,
+        value1: "body",
+        theme: "",
+        controlType: "input",
+        columns: formSchema
     },
     foot: {
-        buttons: [
-            { text: "Cancel", theme: "cancel", type: "button" },
-            { text: "Save Changes", theme: "save", type: "submit" }
-        ],
-        theme: ""
+        isControl: true,
+        text: "save",
+        theme: "",
+        controlType: "button",
+        class: "px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
     }
 };
 
