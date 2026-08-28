@@ -1,4 +1,4 @@
-import { applyCommonAttributes, applyInputAttributes } from "./applyAttributes.js";
+import { applyCommonAttributes, applyInputAttributes } from "../applyAttributes.js";
 
 export const renderInput = (element, ksAttributes) => {
     const input = document.createElement("input");

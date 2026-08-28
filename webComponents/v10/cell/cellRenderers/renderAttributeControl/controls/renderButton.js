@@ -1,4 +1,4 @@
-import { applyButtonAttributes, applyCommonAttributes } from "./applyAttributes.js";
+import { applyButtonAttributes, applyCommonAttributes } from "../applyAttributes.js";
 
 export const renderButton = (element, ksAttributes) => {
     const button = document.createElement("button");

@@ -1,4 +1,4 @@
-import { applyCommonAttributes, applyInputAttributes, hasValue, isAttributeTrue } from "./applyAttributes.js";
+import { applyCommonAttributes, applyInputAttributes, hasValue, isAttributeTrue } from "../applyAttributes.js";
 
 export const renderCheckbox = (element, ksAttributes) => {
     const checkbox = document.createElement("input");
