@@ -2,7 +2,7 @@ import { applyButtonAttributes, applyCommonAttributes } from "../../applyAttribu
 import { createElement } from "./createElement.js";
 import { attachEvents } from "./attachEvents.js";
 
-export const renderButton = (element, ksAttributes) => {
+export const renderButton = (ksAttributes) => {
     // 1. Create Element
     const button = createElement(ksAttributes);
 
@@ -11,8 +11,8 @@ export const renderButton = (element, ksAttributes) => {
     applyButtonAttributes(button, ksAttributes);
 
     // 3. Attach Events
-    attachEvents(button, ksAttributes, element);
+    attachEvents(button, ksAttributes);
 
-    // 4. Append to DOM
-    element.appendChild(button);
+    // 4. Return the element
+    return button;
 };

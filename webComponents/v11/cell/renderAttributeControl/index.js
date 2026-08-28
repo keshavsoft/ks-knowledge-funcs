@@ -10,11 +10,11 @@ const controlRenderers = {
     label: renderLabel
 };
 
-export const renderAttributeControl = (element, ksAttributes) => {
+export const renderAttributeControl = (ksAttributes) => {
     const controlType = ksAttributes["control-type"];
     const renderer = controlRenderers[controlType];
 
-    if (!renderer) return;
+    if (!renderer) return null;
 
-    renderer(element, ksAttributes);
+    return renderer(ksAttributes);
 };

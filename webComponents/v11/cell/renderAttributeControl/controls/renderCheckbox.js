@@ -1,6 +1,6 @@
 import { applyCommonAttributes, applyInputAttributes, hasValue, isAttributeTrue } from "../applyAttributes.js";
 
-export const renderCheckbox = (element, ksAttributes) => {
+export const renderCheckbox = (ksAttributes) => {
     const checkbox = document.createElement("input");
 
     checkbox.type = "checkbox";
@@ -16,5 +16,5 @@ export const renderCheckbox = (element, ksAttributes) => {
     applyCommonAttributes(checkbox, ksAttributes);
     applyInputAttributes(checkbox, ksAttributes);
 
-    element.appendChild(checkbox);
+    return checkbox;
 };

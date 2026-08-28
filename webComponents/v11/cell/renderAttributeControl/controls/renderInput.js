@@ -1,6 +1,6 @@
 import { applyCommonAttributes, applyInputAttributes } from "../applyAttributes.js";
 
-export const renderInput = (element, ksAttributes) => {
+export const renderInput = (ksAttributes) => {
     const input = document.createElement("input");
 
     input.type = ksAttributes["type"] || "text";
@@ -10,5 +10,5 @@ export const renderInput = (element, ksAttributes) => {
     applyCommonAttributes(input, ksAttributes);
     applyInputAttributes(input, ksAttributes);
 
-    element.appendChild(input);
+    return input;
 };
