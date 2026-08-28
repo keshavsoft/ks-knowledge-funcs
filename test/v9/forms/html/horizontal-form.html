@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizontal Form Row Tests</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="p-8 bg-gray-50 flex flex-col gap-8 max-w-5xl mx-auto mb-20">
+    <a href="index.html" class="text-blue-500 hover:underline">&larr; Back to HTML Forms Index</a>
+
+    <div>
+        <h1 class="text-2xl font-bold mb-6">Horizontal Form Row Tests (v7)</h1>
+        <p class="text-gray-600 mb-6">Testing side-by-side single row layouts like toolbars and inline filters.</p>
+
+        <div class="flex flex-col gap-8">
+
+            <!-- Default Horizontal Row -->
+            <div>
+                <h3 class="text-sm font-semibold text-gray-500 mb-2">1. Default Inline Form (Label -> Input -> Button)
+                </h3>
+                <ks-horizontal-form-row ks-label-text="Email Address:" ks-input-type="email"
+                    ks-input-placeholder="you@example.com" ks-button-text="Subscribe">
+                </ks-horizontal-form-row>
+            </div>
+
+            <!-- Compact Theme -->
+            <div>
+                <h3 class="text-sm font-semibold text-gray-500 mb-2">2. Compact Theme Toolbar</h3>
+                <ks-horizontal-form-row ks-theme="compact" ks-label-text="Filter By Date:" ks-input-type="date"
+                    ks-button-text="Apply Filter" ks-button-theme="danger">
+                </ks-horizontal-form-row>
+            </div>
+
+            <!-- Borderless Search Bar -->
+            <div>
+                <h3 class="text-sm font-semibold text-gray-500 mb-2">3. Borderless Search (Input -> Button)</h3>
+                <ks-horizontal-form-row ks-theme="borderless" ks-order="input,button" ks-input-type="text"
+                    ks-input-placeholder="Search records..." ks-button-text="Search">
+                </ks-horizontal-form-row>
+            </div>
+
+            <!-- Reversed Order -->
+            <div>
+                <h3 class="text-sm font-semibold text-gray-500 mb-2">4. Reversed Order (Button -> Input -> Label)</h3>
+                <ks-horizontal-form-row ks-order="button,input,label" ks-label-text="I acknowledge the terms"
+                    ks-input-type="text" ks-input-placeholder="Type 'YES'" ks-button-text="Confirm">
+                </ks-horizontal-form-row>
+            </div>
+
+            <!-- Checkbox Form -->
+            <div>
+                <h3 class="text-sm font-semibold text-gray-500 mb-2">5. With Checkbox (Checkbox -> Label -> Button)</h3>
+                <ks-horizontal-form-row 
+                    ks-order="checkbox,label,button" 
+                    ks-show-checkbox="true" 
+                    ks-checkbox-checked="true"
+                    ks-label-text="Remember my preference" 
+                    ks-button-text="Save settings">
+                </ks-horizontal-form-row>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="module" src="../../../../index.js"></script>
+</body>
+
+</html>

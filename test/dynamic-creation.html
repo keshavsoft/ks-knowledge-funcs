@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Component Creation Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 p-8 font-sans">
+    <div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-2">Dynamically Create KsTableCellContent</h1>
+
+        <div class="space-y-6" id="dynamic-container">
+            <!-- Dynamically created components will be appended here -->
+        </div>
+    </div>
+
+    <script type="module">
+        import '../index.js'; // Imports and registers ks-table-cell-content-common
+
+        const container = document.getElementById('dynamic-container');
+
+        const testCases = [
+            {
+                label: "Dynamically created Text Input",
+                cellValue: "Programmatic text",
+                options: { controlType: "text", showInput: true, theme: "default" }
+            },
+            {
+                label: "Dynamically created Number Input",
+                cellValue: 42,
+                options: { controlType: "number", showInput: true, min: 0, max: 100 }
+            },
+            {
+                label: "Dynamically created Default View",
+                cellValue: "I am just normal text!",
+                options: { theme: "tableCellExtraLarge" }
+            },
+            {
+                label: "Dynamically created Array View",
+                cellValue: ["Item 1", "Item 2", "Item 3"],
+                options: {} // No showInput, is an array, triggers renderArrayView
+            },
+            {
+                label: "Dynamically created Vertical Form with Button",
+                cellValue: "Pre-filled text",
+                options: {
+                    controlType: "text",
+                    showInput: true,
+                    showButton: true,
+                    buttonText: "Update",
+                    theme: "verticalStandard"
+                }
+            }
+        ];
+
+        testCases.forEach((tc) => {
+            // 1. Create wrapper
+            const wrapper = document.createElement('div');
+            wrapper.className = "flex flex-col space-y-2 p-4 border border-gray-100 rounded-md bg-gray-50";
+
+            // 2. Create label
+            const label = document.createElement('label');
+            label.className = "text-sm font-semibold text-gray-700 uppercase tracking-wider";
+            label.textContent = tc.label;
+
+            // 3. Programmatically CREATE the custom Web Component
+            const cellComponent = document.createElement("ks-table-cell-content-common");
+
+            // 4. Set inputs via JS property
+            cellComponent.inputs = {
+                cellValue: tc.cellValue,
+                rowData: { id: 1 },
+                options: tc.options
+            };
+
+            // 5. Append everything to DOM
+            wrapper.appendChild(label);
+            wrapper.appendChild(cellComponent);
+            container.appendChild(wrapper);
+        });
+    </script>
+</body>
+
+</html>

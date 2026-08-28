@@ -1,0 +1,50 @@
+{
+    "default": {
+        "wrapper": "flex flex-col w-full",
+        "header": "ks-form-header font-semibold text-gray-800 text-lg mb-4 border-b pb-2",
+        "body": "flex flex-col gap-4",
+        "footer": "ks-form-footer mt-6 pt-4 border-t flex justify-end gap-3",
+        "button": "px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition",
+        "button-save": "px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition",
+        "button-cancel": "px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition",
+        "button-edit": "px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition",
+        "button-update": "px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition",
+        "button-add": "px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+    },
+    "inline": {
+        "wrapper": "flex flex-row items-center flex-wrap gap-4 w-full",
+        "header": "ks-form-header font-semibold text-gray-800 mb-0 border-0 pb-0",
+        "body": "flex flex-row items-center flex-wrap gap-4",
+        "footer": "ks-form-footer flex items-center mt-0 pt-0 border-0 gap-2",
+        "button": "px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 shadow",
+        "button-save": "px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700 shadow",
+        "button-cancel": "px-6 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 shadow",
+        "button-edit": "px-6 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 shadow",
+        "button-update": "px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 shadow",
+        "button-add": "px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 shadow"
+    },
+    "card": {
+        "wrapper": "flex flex-col w-full bg-white shadow-lg border border-gray-100 rounded-xl p-8",
+        "header": "ks-form-header font-bold text-gray-800 text-xl mb-6 border-b pb-4",
+        "body": "flex flex-col gap-6",
+        "footer": "ks-form-footer mt-8 pt-4 border-t flex justify-end gap-4",
+        "button": "px-5 py-2 bg-indigo-600 text-white font-medium rounded shadow-sm hover:bg-indigo-700 transition",
+        "button-save": "px-5 py-2 bg-green-600 text-white font-medium rounded shadow-sm hover:bg-green-700 transition",
+        "button-cancel": "px-5 py-2 bg-gray-500 text-white font-medium rounded shadow-sm hover:bg-gray-600 transition",
+        "button-edit": "px-5 py-2 bg-yellow-500 text-white font-medium rounded shadow-sm hover:bg-yellow-600 transition",
+        "button-update": "px-5 py-2 bg-blue-600 text-white font-medium rounded shadow-sm hover:bg-blue-700 transition",
+        "button-add": "px-5 py-2 bg-purple-600 text-white font-medium rounded shadow-sm hover:bg-purple-700 transition"
+    },
+    "card-grid-3-col": {
+        "wrapper": "flex flex-col w-full bg-white shadow-lg border border-gray-100 rounded-xl p-8",
+        "header": "ks-form-header font-bold text-gray-800 text-xl mb-6 border-b pb-4",
+        "body": "grid grid-cols-3 gap-6",
+        "footer": "ks-form-footer mt-8 pt-4 border-t flex justify-end gap-4",
+        "button": "px-5 py-2 bg-indigo-600 text-white font-medium rounded shadow-sm hover:bg-indigo-700 transition",
+        "button-save": "px-5 py-2 bg-green-600 text-white font-medium rounded shadow-sm hover:bg-green-700 transition",
+        "button-cancel": "px-5 py-2 bg-gray-500 text-white font-medium rounded shadow-sm hover:bg-gray-600 transition",
+        "button-edit": "px-5 py-2 bg-yellow-500 text-white font-medium rounded shadow-sm hover:bg-yellow-600 transition",
+        "button-update": "px-5 py-2 bg-blue-600 text-white font-medium rounded shadow-sm hover:bg-blue-700 transition",
+        "button-add": "px-5 py-2 bg-purple-600 text-white font-medium rounded shadow-sm hover:bg-purple-700 transition"
+    }
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertical Form Row Tests</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="p-8 bg-gray-50 flex flex-col gap-8 max-w-4xl mx-auto mb-20">
+    <a href="index.html" class="text-blue-500 hover:underline">&larr; Back to HTML Forms Index</a>
+
+    <div>
+        <h1 class="text-2xl font-bold mb-6">Vertical Form Row Comprehensive Tests (v7)</h1>
+        <p class="text-gray-600 mb-6">Testing all combinations of themes, ordering, and nested control styles in the v6
+            test folder.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <!-- GROUP 1: THEMES -->
+            <div class="flex flex-col gap-4">
+                <h2 class="text-xl font-bold border-b pb-2">Themes</h2>
+
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 mb-2">Default Theme (Padded, Border)</h3>
+                    <ks-vertical-form-row ks-theme="default" ks-label-text="Email Address" ks-input-type="email"
+                        ks-button-text="Submit">
+                    </ks-vertical-form-row>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 mb-2">Compact Theme (Small Gaps, Gray BG)</h3>
+                    <ks-vertical-form-row ks-theme="compact" ks-label-text="Username" ks-input-type="text"
+                        ks-button-text="Check Availability">
+                    </ks-vertical-form-row>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 mb-2">Borderless Theme (No border, padding y only)
+                    </h3>
+                    <ks-vertical-form-row ks-theme="borderless" ks-label-text="Quick Search" ks-input-type="search"
+                        ks-button-text="Go">
+                    </ks-vertical-form-row>
+                </div>
+            </div>
+
+            <!-- GROUP 2: ORDERING -->
+            <div class="flex flex-col gap-4">
+                <h2 class="text-xl font-bold border-b pb-2">Custom Ordering</h2>
+
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 mb-2">Button -> Input -> Label</h3>
+                    <ks-vertical-form-row ks-order="button,input,label" ks-label-text="I agree to terms"
+                        ks-input-type="text" ks-button-text="Click First">
+                    </ks-vertical-form-row>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 mb-2">Input -> Button (No Label)</h3>
+                    <ks-vertical-form-row ks-theme="compact" ks-order="input,button"
+                        ks-input-placeholder="Type message here..." ks-button-text="Send">
+                    </ks-vertical-form-row>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 mb-2">Label -> Input (No Button)</h3>
+                    <ks-vertical-form-row ks-order="label,input" ks-label-text="Just reading data" ks-input-type="text"
+                        ks-input-placeholder="Read only...">
+                    </ks-vertical-form-row>
+                </div>
+            </div>
+
+            <!-- GROUP 3: NESTED CONTROL COMBINATIONS -->
+            <div class="flex flex-col gap-4 md:col-span-2">
+                <h2 class="text-xl font-bold border-b pb-2">Nested Control Customization</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-500 mb-2">Danger Button + Password Input</h3>
+                        <ks-vertical-form-row ks-label-text="Delete Account" ks-input-type="password"
+                            ks-input-placeholder="Confirm password" ks-button-theme="danger"
+                            ks-button-text="Permanently Delete">
+                        </ks-vertical-form-row>
+                    </div>
+
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-500 mb-2">Date Input + Long Label Wrap</h3>
+                        <ks-vertical-form-row
+                            ks-label-text="Please select a valid date for your upcoming appointment before proceeding:"
+                            ks-input-type="date" ks-button-text="Schedule">
+                        </ks-vertical-form-row>
+                    </div>
+
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-500 mb-2">Checkbox Login Flow</h3>
+                        <ks-vertical-form-row 
+                            ks-order="input,checkbox,label,button"
+                            ks-input-type="password"
+                            ks-input-placeholder="Enter your password"
+                            ks-show-checkbox="true"
+                            ks-label-text="Show Password"
+                            ks-button-text="Login">
+                        </ks-vertical-form-row>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="module" src="../../../../index.js"></script>
+</body>
+
+</html>

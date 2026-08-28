@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Classes Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 p-8 font-sans">
+    <div class="max-w-6xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+        <h1 class="text-3xl font-extrabold text-gray-900 mb-2">Button Classes Showcase</h1>
+        <p class="text-gray-500 mb-8 text-lg">Interactive reference for <code>PREDEFINED_BUTTON_CLASSES.json</code>.</p>
+
+        <!-- Tabs Navigation -->
+        <div class="flex space-x-2 border-b border-gray-200 mb-6 pb-2 overflow-x-auto" id="tabs-container">
+            <!-- Tabs injected here -->
+        </div>
+
+        <div id="showcase-container" class="grid grid-cols-1 lg:grid-cols-2 gap-6"></div>
+    </div>
+
+    <script src="https://keshavsoft.github.io/ks-web-components/dist/v10/ks-web-components.js" type="module"></script>
+    <script type="module">
+
+        const BUTTON_CLASSES = window.ks.webComponents.KsTableCellContent.PREDEFINED_BUTTON_CLASSES;
+
+        const container = document.getElementById('showcase-container');
+        const tabsContainer = document.getElementById('tabs-container');
+
+        // Helper to flatten nested JSON object into dot-separated keys
+        function flattenObject(obj, prefix = '') {
+            return Object.keys(obj).reduce((acc, k) => {
+                const pre = prefix.length ? prefix + '.' : '';
+                if (typeof obj[k] === 'object' && obj[k] !== null) {
+                    Object.assign(acc, flattenObject(obj[k], pre + k));
+                } else {
+                    acc[pre + k] = obj[k];
+                }
+                return acc;
+            }, {});
+        }
+
+        const flattenedClasses = flattenObject(BUTTON_CLASSES);
+        let activeTab = 'All';
+
+        const categories = [
+            { id: 'All', label: 'All Buttons', filter: () => true },
+            { id: 'TableCell', label: 'Table Cell Buttons', filter: (k) => k.startsWith('table.cell') },
+            { id: 'TableFoot', label: 'Table Footer Buttons', filter: (k) => k.startsWith('table.foot') },
+            { id: 'Vertical', label: 'Vertical Forms', filter: (k) => k.startsWith('vertical') },
+            { id: 'Misc', label: 'Other', filter: (k) => k === 'default' }
+        ];
+
+        function renderTabs() {
+            tabsContainer.innerHTML = '';
+            categories.forEach(cat => {
+                const btn = document.createElement('button');
+                const isActive = activeTab === cat.id;
+                
+                btn.className = `px-4 py-2 text-sm font-medium rounded-t-lg transition-colors whitespace-nowrap ${
+                    isActive 
+                    ? 'bg-blue-50 text-blue-700 border-b-2 border-blue-600' 
+                    : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+                }`;
+                btn.textContent = cat.label;
+                btn.onclick = () => {
+                    activeTab = cat.id;
+                    renderTabs();
+                    renderCards();
+                };
+                tabsContainer.appendChild(btn);
+            });
+        }
+
+        function renderCards() {
+            container.innerHTML = '';
+            const activeCategory = categories.find(c => c.id === activeTab);
+
+            Object.entries(flattenedClasses)
+                .filter(([key]) => activeCategory.filter(key))
+                .forEach(([key, className]) => {
+                    const wrapper = document.createElement('div');
+                    wrapper.className = "flex flex-col space-y-3 p-5 border border-gray-200 rounded-xl bg-gray-50 hover:border-blue-400 hover:shadow-md transition-all";
+
+                    const header = document.createElement('div');
+                    header.className = "flex flex-col gap-1 border-b border-gray-200 pb-3";
+                    
+                    const title = document.createElement('h3');
+                    title.className = "font-bold text-blue-800 text-lg tracking-tight";
+                    title.textContent = key;
+
+                    const code = document.createElement('code');
+                    code.className = "text-[11px] text-gray-500 bg-gray-200 px-2 py-1 rounded break-words font-mono";
+                    code.textContent = className;
+
+                    header.appendChild(title);
+                    header.appendChild(code);
+
+                    const previewWrapper = document.createElement('div');
+                    // Add background color for contrast if button contains white text, just in case.
+                    previewWrapper.className = "p-6 bg-white border border-gray-200 rounded-lg overflow-x-auto flex flex-col items-center justify-center min-h-[100px] shadow-inner";
+                    
+                    const previewBtn = document.createElement('button');
+                    previewBtn.className = className;
+                    
+                    // Contextual sample text
+                    let sampleText = "Click Me";
+                    if (key.includes('danger')) sampleText = "Delete";
+                    if (key.includes('success')) sampleText = "Save Changes";
+                    if (key.includes('primary')) sampleText = "Submit";
+                    
+                    previewBtn.textContent = sampleText;
+
+                    previewWrapper.appendChild(previewBtn);
+
+                    wrapper.appendChild(header);
+                    wrapper.appendChild(previewWrapper);
+                    
+                    container.appendChild(wrapper);
+                });
+        }
+
+        // Initial render
+        renderTabs();
+        renderCards();
+    </script>
+</body>
+
+</html>

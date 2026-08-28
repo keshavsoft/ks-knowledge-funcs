@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ks-web-components Test</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .component-box {
+            border: 1px solid #ccc;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>ks-web-components Test Page</h1>
+    <p>This page tests the <code>&lt;ks-table-cell-content-common&gt;</code> custom element.</p>
+
+    <div class="component-box">
+        <h3>Default Render (Text)</h3>
+        <!-- The component instance -->
+        <ks-table-cell-content-common id="test-cell-default"></ks-table-cell-content-common>
+    </div>
+
+    <div class="component-box">
+        <h3>Input Render (Checkbox)</h3>
+        <!-- The component instance -->
+        <ks-table-cell-content-common id="test-cell-input"></ks-table-cell-content-common>
+    </div>
+
+    <script type="module">
+        // Import the component so it gets registered
+        import '../index.js';
+
+        // 1. Setup Default Text Cell
+        const defaultCell = document.getElementById('test-cell-default');
+        defaultCell.inputs = {
+            cellValue: "Hello World! This is the default render fallback.",
+            rowData: { id: 1, name: "Test Row" },
+            options: {
+                dataKey: "name"
+            }
+        };
+
+        // 2. Setup Input Control Cell
+        const inputCell = document.getElementById('test-cell-input');
+        inputCell.inputs = {
+            cellValue: true,
+            rowData: { id: 2, isActive: true },
+            options: {
+                dataKey: "isActive",
+                showInput: true,
+                type: "checkbox"
+            }
+        };
+    </script>
+</body>
+</html>

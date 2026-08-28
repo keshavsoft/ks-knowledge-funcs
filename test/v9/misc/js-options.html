@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base Controls Test - JS Options</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="p-8 bg-gray-50 flex flex-col gap-8 max-w-2xl mx-auto">
+    <a href="index.html" class="text-blue-500 hover:underline">&larr; Back to Misc Index</a>
+    <h2>Label Control (Via JS Options)</h2>
+    <!-- Rendered via JS below -->
+    <div id="label-container"></div>
+
+    <h2>Input Control (Via JS Options on existing element)</h2>
+    <!-- Empty element, options injected via JS -->
+    <ks-web-component id="dynamic-input"></ks-web-component>
+
+    <h2>Button Control (Via JS Object literal)</h2>
+    <div id="button-container"></div>
+
+    <script type="module" src="../../../index.js"></script>
+    <script type="module">
+        // Example 1: Create element fully via JS and append
+        const labelEl = document.createElement("ks-web-component");
+        labelEl._options = {
+            controlType: "label",
+            text: "This label was created 100% via JavaScript!",
+            className: "text-bold"
+        };
+        // Appending to DOM triggers connectedCallback which calls render()
+        document.getElementById("label-container").appendChild(labelEl);
+
+        // Example 2: Update an existing DOM element
+        const inputEl = document.getElementById("dynamic-input");
+        inputEl._options = {
+            controlType: "input",
+            type: "password",
+            placeholder: "Secret JS input..."
+        };
+        // Manually trigger render since it was already in the DOM (connectedCallback already fired)
+        inputEl.render();
+
+        // Example 3: Button creation
+        const btnEl = document.createElement("ks-web-component");
+        btnEl._options = {
+            controlType: "button",
+            text: "Click Me (JS)",
+            className: "btn-primary"
+        };
+        document.getElementById("button-container").appendChild(btnEl);
+    </script>
+</body>
+
+</html>

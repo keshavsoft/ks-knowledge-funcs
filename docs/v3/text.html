@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typography & Styling Tokens - v3 Story 🚀</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        code, pre { font-family: 'Fira Code', monospace; }
+        .hero-card {
+            background: #ffffff;
+            box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+        .code-dark {
+            background: #0f172a;
+            color: #f8fafc;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 min-h-screen p-8 font-sans">
+    <div class="max-w-6xl mx-auto space-y-8">
+        
+        <!-- Header Nav -->
+        <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+            <a href="index.html" class="text-xs font-bold text-blue-600 hover:underline flex items-center gap-1">
+                &larr; Back to Junior Developer Portal
+            </a>
+            <span class="text-xs bg-blue-100 text-blue-800 font-mono px-3 py-1 rounded-full border border-blue-200 font-bold">
+                Story 1 of 5: Typography & Design Tokens
+            </span>
+        </div>
+
+        <!-- Story Title Banner -->
+        <div class="hero-card p-8 rounded-3xl border-blue-200 space-y-3 bg-gradient-to-r from-white to-blue-50/50">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-blue-700 bg-blue-100 px-3 py-1 rounded-full border border-blue-200">Story 1</span>
+            <h1 class="text-3xl font-extrabold text-slate-900">Typography & Styling Token Registries</h1>
+            <p class="text-slate-600 text-sm leading-relaxed max-w-3xl">
+                Junior developers don't need to guess Tailwind classes for table formatting. Use our central token map (<code class="text-blue-700 font-mono font-semibold">PREDEFINED_TEXT_CLASSES.json</code>) to format header text, numeric currency columns, bold totals, badges, and muted notes!
+            </p>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+            <!-- Card 1: Table Primary Header -->
+            <div class="hero-card p-6 rounded-2xl border-slate-200 hover:border-blue-400 transition space-y-3 overflow-hidden">
+                <div class="flex items-center justify-between">
+                    <span class="font-mono text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded border border-blue-200">table.head.primary</span>
+                    <span class="text-[10px] font-mono text-slate-500 font-bold">Header Typography Token</span>
+                </div>
+                <p class="text-xs text-slate-600">Used for primary data table header titles with bold uppercase font and dark text contrast.</p>
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                    <span class="text-xs text-slate-500 font-mono font-semibold">Rendered Output:</span>
+                    <span class="text-xs font-extrabold uppercase tracking-wider text-slate-900 font-sans">INVOICE NUMBER</span>
+                </div>
+                <pre class="code-dark p-3 rounded-lg text-[10px] font-mono text-blue-300 border border-slate-800 whitespace-pre-wrap break-all overflow-x-auto max-w-full"><code>&lt;<span class="text-purple-400">ks-table-cell-content-common</span>
+  <span class="text-sky-300">options</span>=<span class="text-amber-300">'{"theme": "table.head.primary"}'</span>&gt;
+&lt;/<span class="text-purple-400">ks-table-cell-content-common</span>&gt;</code></pre>
+            </div>
+
+            <!-- Card 2: Table Cell Numeric -->
+            <div class="hero-card p-6 rounded-2xl border-slate-200 hover:border-blue-400 transition space-y-3 overflow-hidden">
+                <div class="flex items-center justify-between">
+                    <span class="font-mono text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded border border-blue-200">table.cell.numeric</span>
+                    <span class="text-[10px] font-mono text-slate-500 font-bold">Numeric Cell Token</span>
+                </div>
+                <p class="text-xs text-slate-600">Aligns currency values right and uses tabular monospaced numbers for clean vertical alignment.</p>
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                    <span class="text-xs text-slate-500 font-mono font-semibold">Rendered Output:</span>
+                    <span class="text-sm font-mono font-bold text-indigo-700 text-right">₹1,45,890.00</span>
+                </div>
+                <pre class="code-dark p-3 rounded-lg text-[10px] font-mono text-blue-300 border border-slate-800 whitespace-pre-wrap break-all overflow-x-auto max-w-full"><code>&lt;<span class="text-purple-400">ks-table-cell-content-common</span>
+  <span class="text-sky-300">options</span>=<span class="text-amber-300">'{"theme": "table.cell.numeric"}'</span>&gt;
+&lt;/<span class="text-purple-400">ks-table-cell-content-common</span>&gt;</code></pre>
+            </div>
+
+            <!-- Card 3: Table Cell Bold Total -->
+            <div class="hero-card p-6 rounded-2xl border-slate-200 hover:border-blue-400 transition space-y-3 overflow-hidden">
+                <div class="flex items-center justify-between">
+                    <span class="font-mono text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded border border-blue-200">table.foot.summary</span>
+                    <span class="text-[10px] font-mono text-slate-500 font-bold">Footer Summary Token</span>
+                </div>
+                <p class="text-xs text-slate-600">Used for summary footer rows and grand totals with heavy bold weight and accent color.</p>
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                    <span class="text-xs text-slate-500 font-mono font-semibold">Rendered Output:</span>
+                    <span class="text-sm font-extrabold text-emerald-700">Grand Total: ₹5,98,400.00</span>
+                </div>
+                <pre class="code-dark p-3 rounded-lg text-[10px] font-mono text-blue-300 border border-slate-800 whitespace-pre-wrap break-all overflow-x-auto max-w-full"><code>&lt;<span class="text-purple-400">ks-table-cell-content-common</span>
+  <span class="text-sky-300">options</span>=<span class="text-amber-300">'{"theme": "table.foot.summary"}'</span>&gt;
+&lt;/<span class="text-purple-400">ks-table-cell-content-common</span>&gt;</code></pre>
+            </div>
+
+            <!-- Card 4: Table Badge Token -->
+            <div class="hero-card p-6 rounded-2xl border-slate-200 hover:border-blue-400 transition space-y-3 overflow-hidden">
+                <div class="flex items-center justify-between">
+                    <span class="font-mono text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded border border-blue-200">table.cell.badge</span>
+                    <span class="text-[10px] font-mono text-slate-500 font-bold">Status Badge Token</span>
+                </div>
+                <p class="text-xs text-slate-600">Renders compact pill badges with rounded borders for status indicators like Paid, Pending, or Active.</p>
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                    <span class="text-xs text-slate-500 font-mono font-semibold">Rendered Output:</span>
+                    <span class="bg-emerald-100 text-emerald-800 border border-emerald-300 text-xs font-bold px-3 py-1 rounded-full">APPROVED ✓</span>
+                </div>
+                <pre class="code-dark p-3 rounded-lg text-[10px] font-mono text-blue-300 border border-slate-800 whitespace-pre-wrap break-all overflow-x-auto max-w-full"><code>&lt;<span class="text-purple-400">ks-table-cell-content-common</span>
+  <span class="text-sky-300">options</span>=<span class="text-amber-300">'{"theme": "table.cell.badge"}'</span>&gt;
+&lt;/<span class="text-purple-400">ks-table-cell-content-common</span>&gt;</code></pre>
+            </div>
+
+            <!-- Card 5: Table Cell Muted -->
+            <div class="hero-card p-6 rounded-2xl border-slate-200 hover:border-blue-400 transition space-y-3 overflow-hidden lg:col-span-2">
+                <div class="flex items-center justify-between">
+                    <span class="font-mono text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded border border-blue-200">table.cell.muted</span>
+                    <span class="text-[10px] font-mono text-slate-500 font-bold">Muted Subtext Token</span>
+                </div>
+                <p class="text-xs text-slate-600">Used for secondary metadata notes, timestamps, or system reference codes with reduced visual weight.</p>
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                    <span class="text-xs text-slate-500 font-mono font-semibold">Rendered Output:</span>
+                    <span class="text-xs text-slate-500 italic">Last updated 2 minutes ago by System Administrator</span>
+                </div>
+                <pre class="code-dark p-3 rounded-lg text-[10px] font-mono text-blue-300 border border-slate-800 whitespace-pre-wrap break-all overflow-x-auto max-w-full"><code>&lt;<span class="text-purple-400">ks-table-cell-content-common</span>
+  <span class="text-sky-300">options</span>=<span class="text-amber-300">'{"theme": "table.cell.muted"}'</span>&gt;
+&lt;/<span class="text-purple-400">ks-table-cell-content-common</span>&gt;</code></pre>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

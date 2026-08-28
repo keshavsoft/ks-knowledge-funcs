@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizontal Form (JS)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="p-8 bg-gray-50 flex flex-col gap-8 max-w-4xl mx-auto mb-20">
+    <a href="index.html" class="text-blue-500 hover:underline">&larr; Back to JS Forms Index</a>
+
+    <div id="four-rows-container" class="mb-4">
+        <h3 class="text-sm font-semibold text-gray-500 mb-2">3. Four Rows (Label and Input only)</h3>
+        <!-- Rows will be injected here -->
+    </div>
+
+    <script type="module" src="../../../../index.js"></script>
+    <script type="module">
+        const columns = ["Name", "Mobile", "city"];
+
+        const fourRowsContainer = document.getElementById("four-rows-container");
+
+        columns.forEach(column => {
+            const row = document.createElement("ks-horizontal-form-row");
+            // Add some margin bottom for spacing between rows
+            row.className = "block mb-4";
+            row._options = {
+                theme: "split-30-70",
+                order: "label,input",
+                labelText: column,
+                inputType: "text",
+                inputPlaceholder: `Enter value for field ${column}...`
+            };
+
+            fourRowsContainer.appendChild(row);
+        });
+
+    </script>
+</body>
+
+</html>

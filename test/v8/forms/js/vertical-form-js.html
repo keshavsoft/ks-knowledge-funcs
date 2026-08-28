@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertical Form (JS)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-8 bg-gray-50 flex flex-col gap-8 max-w-3xl mx-auto mb-20">
+    <a href="index.html" class="text-blue-500 hover:underline">&larr; Back to JS Forms Index</a>
+    
+    <h1 class="text-2xl font-bold">Vertical Form Built via JavaScript</h1>
+    <p class="text-gray-600">The forms below are built dynamically by setting the <code class="bg-gray-200 px-1 rounded">_options</code> property.</p>
+
+    <!-- Containers for JS injection -->
+    <div id="default-form-container" class="mb-4">
+        <h3 class="text-sm font-semibold text-gray-500 mb-2">1. Default Form</h3>
+    </div>
+    
+    <div id="login-form-container" class="mb-4">
+        <h3 class="text-sm font-semibold text-gray-500 mb-2">2. Checkbox Login Form</h3>
+    </div>
+
+    <script type="module" src="../../../../index.js"></script>
+    <script type="module">
+        // 1. Default Form
+        const defaultForm = document.createElement("ks-vertical-form-row");
+        defaultForm._options = {
+            theme: "default",
+            labelText: "Email Address",
+            inputType: "email",
+            buttonText: "Submit"
+        };
+        document.getElementById("default-form-container").appendChild(defaultForm);
+
+        // 2. Login Form
+        const loginForm = document.createElement("ks-vertical-form-row");
+        loginForm._options = {
+            theme: "compact",
+            order: "input,checkbox,label,button",
+            inputType: "password",
+            inputPlaceholder: "Enter your password",
+            showCheckbox: "true",
+            labelText: "Show Password",
+            buttonText: "Login"
+        };
+        document.getElementById("login-form-container").appendChild(loginForm);
+    </script>
+</body>
+</html>

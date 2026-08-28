@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Control Tests</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-8 bg-gray-50 flex flex-col gap-8 max-w-2xl mx-auto">
+    <a href="index.html" class="text-blue-500 hover:underline">&larr; Back to Base Controls Index</a>
+    
+    <div>
+        <h1 class="text-2xl font-bold mb-6">Button Control (ks-control-type="button")</h1>
+        
+        <div class="flex flex-col gap-6">
+            
+            <!-- Themes -->
+            <div class="p-4 bg-white rounded shadow flex flex-col gap-4">
+                <h3 class="text-sm font-semibold text-gray-500">1. Themes</h3>
+                <div class="flex flex-wrap gap-2">
+                    <ks-web-component ks-control-type="button" ks-text="Default Theme"></ks-web-component>
+                    <ks-web-component ks-control-type="button" ks-text="Primary (if configured)"></ks-web-component>
+                    <ks-web-component ks-control-type="button" ks-text="Vertical Large Text" ks-theme="verticalLargeText"></ks-web-component>
+                </div>
+            </div>
+
+            <!-- HTML Types -->
+            <div class="p-4 bg-white rounded shadow">
+                <h3 class="text-sm font-semibold text-gray-500 mb-2">2. Types (Submit, Reset)</h3>
+                <form class="flex gap-2 p-2 border border-dashed border-gray-300">
+                    <ks-web-component ks-control-type="button" ks-type="submit" ks-text="Submit Form (type='submit')"></ks-web-component>
+                    <ks-web-component ks-control-type="button" ks-type="reset" ks-text="Reset Form (type='reset')"></ks-web-component>
+                </form>
+            </div>
+
+            <!-- States (Disabled / TabIndex) -->
+            <div class="p-4 bg-white rounded shadow">
+                <h3 class="text-sm font-semibold text-gray-500 mb-2">3. States (Disabled, TabIndex, Autofocus)</h3>
+                <div class="flex gap-2">
+                    <ks-web-component ks-control-type="button" ks-text="Disabled Button" ks-disabled="true"></ks-web-component>
+                    <ks-web-component ks-control-type="button" ks-text="Autofocus" ks-autofocus="true"></ks-web-component>
+                    <ks-web-component ks-control-type="button" ks-text="Tab Index 2" ks-tab-index="2"></ks-web-component>
+                    <ks-web-component ks-control-type="button" ks-text="Tab Index 1" ks-tab-index="1"></ks-web-component>
+                </div>
+            </div>
+
+            <!-- Custom Class Override -->
+            <div class="p-4 bg-white rounded shadow">
+                <h3 class="text-sm font-semibold text-gray-500 mb-2">4. Custom Class Override</h3>
+                <ks-web-component ks-control-type="button" ks-text="Gradient Button" ks-class-name="bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold py-2 px-4 rounded shadow-lg transform hover:scale-105 transition-transform"></ks-web-component>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="module" src="../../../index.js"></script>
+</body>
+</html>

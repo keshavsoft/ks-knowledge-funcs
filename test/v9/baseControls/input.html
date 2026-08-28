@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Control Tests</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-8 bg-gray-50 flex flex-col gap-8 max-w-2xl mx-auto">
+    <a href="index.html" class="text-blue-500 hover:underline">&larr; Back to Base Controls Index</a>
+    
+    <div>
+        <h1 class="text-2xl font-bold mb-6">Input Control (ks-control-type="input")</h1>
+        
+        <div class="flex flex-col gap-6">
+            
+            <!-- Themes -->
+            <div class="p-4 bg-white rounded shadow">
+                <h3 class="text-sm font-semibold text-gray-500 mb-2">1. Themes</h3>
+                <div class="flex flex-col gap-2">
+                    <ks-web-component ks-control-type="input" ks-placeholder="Default theme (ks-theme='default')"></ks-web-component>
+                    <ks-web-component ks-control-type="input" ks-placeholder="Pill theme (ks-theme='pill')" ks-theme="pill"></ks-web-component>
+                    <ks-web-component ks-control-type="input" ks-placeholder="Danger theme (ks-theme='danger')" ks-theme="danger"></ks-web-component>
+                </div>
+            </div>
+
+            <!-- Input Types -->
+            <div class="p-4 bg-white rounded shadow">
+                <h3 class="text-sm font-semibold text-gray-500 mb-2">2. HTML Input Types</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <ks-web-component ks-control-type="input" ks-type="password" ks-placeholder="ks-type='password'"></ks-web-component>
+                    <ks-web-component ks-control-type="input" ks-type="number" ks-placeholder="ks-type='number'"></ks-web-component>
+                    <ks-web-component ks-control-type="input" ks-type="email" ks-placeholder="ks-type='email'"></ks-web-component>
+                    <ks-web-component ks-control-type="input" ks-type="date" ks-placeholder="ks-type='date'"></ks-web-component>
+                </div>
+            </div>
+
+            <!-- States & Accessibility -->
+            <div class="p-4 bg-white rounded shadow">
+                <h3 class="text-sm font-semibold text-gray-500 mb-2">3. States (Disabled, ReadOnly, Autofocus)</h3>
+                <div class="flex flex-col gap-2">
+                    <ks-web-component ks-control-type="input" ks-value="I am disabled" ks-disabled="true"></ks-web-component>
+                    <ks-web-component ks-control-type="input" ks-value="I am read-only" ks-read-only="true"></ks-web-component>
+                    <ks-web-component ks-control-type="input" ks-placeholder="I have autofocus" ks-autofocus="true"></ks-web-component>
+                </div>
+            </div>
+
+            <!-- Pre-filled Value & Custom Class -->
+            <div class="p-4 bg-white rounded shadow">
+                <h3 class="text-sm font-semibold text-gray-500 mb-2">4. Values & Custom Classes</h3>
+                <ks-web-component ks-control-type="input" ks-value="Pre-filled value" ks-class-name="border-purple-500 bg-purple-50 text-purple-900 shadow-md font-mono" ks-id="mySpecialInput"></ks-web-component>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="module" src="../../../index.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Table View - v3 Story 🚀</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        code, pre { font-family: 'Fira Code', monospace; }
+        .hero-card {
+            background: #ffffff;
+            box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen p-8 font-sans">
+    <div class="max-w-6xl mx-auto space-y-8">
+        
+        <!-- Header Nav -->
+        <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+            <a href="index.html" class="text-xs font-bold text-rose-700 hover:underline flex items-center gap-1">
+                &larr; Back to Junior Developer Portal
+            </a>
+            <span class="text-xs bg-rose-100 text-rose-800 font-mono px-3 py-1 rounded-full border border-rose-200 font-bold">
+                Story 4 of 5: Master Table Integration
+            </span>
+        </div>
+
+        <!-- Story Title Banner -->
+        <div class="hero-card p-8 rounded-3xl border-rose-200 space-y-3 bg-gradient-to-r from-white to-rose-50/50">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-rose-700 bg-rose-100 px-3 py-1 rounded-full border border-rose-200">Story 4</span>
+            <h1 class="text-3xl font-extrabold text-slate-900">Master Cell Integration View</h1>
+            <p class="text-slate-600 text-sm leading-relaxed max-w-3xl">
+                Unified master showcase demonstrating how atomic Web Components render inside data table cell elements with combined JSON configurations.
+            </p>
+        </div>
+
+        <div class="hero-card overflow-hidden rounded-2xl border border-slate-200">
+            <table class="w-full text-left text-sm text-slate-800">
+                <thead class="bg-slate-100 text-xs uppercase font-mono font-bold text-slate-700 border-b border-slate-200">
+                    <tr>
+                        <th class="p-4">#</th>
+                        <th class="p-4">Item Name</th>
+                        <th class="p-4 font-mono text-right">Amount</th>
+                        <th class="p-4">Status</th>
+                        <th class="p-4 text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200 bg-white">
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="p-4 font-mono font-bold text-slate-400">1</td>
+                        <td class="p-4 font-semibold text-slate-900">Apple iPhone 15 Pro</td>
+                        <td class="p-4 font-mono text-right text-indigo-700 font-bold">₹1,34,900</td>
+                        <td class="p-4"><span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full border border-emerald-300">In Stock</span></td>
+                        <td class="p-4 text-center"><button class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-3.5 py-1.5 rounded-lg shadow-sm transition" onclick="alert('Viewing iPhone 15 Pro')">View Details</button></td>
+                    </tr>
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="p-4 font-mono font-bold text-slate-400">2</td>
+                        <td class="p-4 font-semibold text-slate-900">Samsung Galaxy S24 Ultra</td>
+                        <td class="p-4 font-mono text-right text-indigo-700 font-bold">₹1,29,999</td>
+                        <td class="p-4"><span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full border border-emerald-300">In Stock</span></td>
+                        <td class="p-4 text-center"><button class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-3.5 py-1.5 rounded-lg shadow-sm transition" onclick="alert('Viewing Galaxy S24 Ultra')">View Details</button></td>
+                    </tr>
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="p-4 font-mono font-bold text-slate-400">3</td>
+                        <td class="p-4 font-semibold text-slate-900">MacBook Pro 16 M3 Max</td>
+                        <td class="p-4 font-mono text-right text-indigo-700 font-bold">₹3,49,900</td>
+                        <td class="p-4"><span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full border border-amber-300">Low Stock</span></td>
+                        <td class="p-4 text-center"><button class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-3.5 py-1.5 rounded-lg shadow-sm transition" onclick="alert('Viewing MacBook Pro')">View Details</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

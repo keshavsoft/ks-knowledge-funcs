@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KS Web Components v3 - The Junior Developer Magic Portal 🚀</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        code, pre { font-family: 'Fira Code', monospace; }
+        .hero-card {
+            background: #ffffff;
+            box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.01);
+            border: 1px solid #e2e8f0;
+        }
+        .code-dark {
+            background: #0f172a;
+            color: #f8fafc;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 min-h-screen selection:bg-indigo-500 selection:text-white pb-20">
+
+    <!-- Header Navigation -->
+    <header class="border-b border-slate-200 bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <span class="w-3 h-3 rounded-full bg-indigo-600 animate-ping"></span>
+                <span class="font-extrabold text-xl tracking-tight text-slate-900 font-mono">ks-web-components <span class="text-xs text-indigo-700 font-bold bg-indigo-50 px-2.5 py-0.5 rounded-full border border-indigo-200">v3 Portal</span></span>
+            </div>
+            <div class="flex items-center space-x-4 text-xs font-semibold">
+                <a href="#code-comparison" class="hover:text-indigo-600 transition text-slate-600">The Magic vs Boilerplate</a>
+                <a href="#stories" class="hover:text-indigo-600 transition text-slate-600">Interactive Stories</a>
+                <a href="https://github.com/keshavsoft/ks-web-components" target="_blank" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg shadow-sm transition">GitHub Repo 🐙</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-6 pt-12 space-y-16">
+        
+        <!-- HERO SECTION: THE JUNIOR DEVELOPER WOW FACTOR -->
+        <section class="text-center space-y-6 max-w-4xl mx-auto">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 shadow-sm">
+                ⚡ Designed Exclusively for Junior Developers
+            </div>
+            <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
+                Stop Writing 100 Lines of HTML.<br>
+                <span class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">Do it in 1 Line of Pure Magic.</span>
+            </h1>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                Imagine building complex data table cells, dropdowns, date pickers, styling themes, and safe error wrappers without writing a single line of tedious DOM boilerplate. Welcome to <code class="text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded font-mono font-semibold border border-indigo-100">&lt;ks-table-cell-content-common&gt;</code>!
+            </p>
+        </section>
+
+        <!-- THE CODE COMPARISON SECTION -->
+        <section id="code-comparison" class="space-y-6">
+            <div class="text-center space-y-2">
+                <h2 class="text-2xl font-bold text-slate-900">Before & After: Experience the Difference</h2>
+                <p class="text-slate-600 text-sm">See why junior developers save 10+ hours every week using our web components.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <!-- OLD TRADITIONAL WAY (TEDIOUS & FRAGILE) -->
+                <div class="hero-card p-6 rounded-2xl border-rose-200 relative overflow-hidden bg-rose-50/30">
+                    <div class="absolute top-0 right-0 bg-rose-100 text-rose-800 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-bl-lg border-l border-b border-rose-200">
+                        ❌ The Old Painful Way (80+ Lines)
+                    </div>
+                    <h3 class="text-lg font-bold text-rose-700 mb-3">Traditional Manual DOM Code</h3>
+                    <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+                        Writing manual loops, setting 15 attributes, styling classes, manual event listener attachments, and fragile try/catch error wrappers...
+                    </p>
+                    <pre class="code-dark p-4 rounded-xl text-[11px] font-mono text-rose-300 overflow-x-auto border border-slate-800 whitespace-pre-wrap break-all"><code><span class="text-slate-500">// 80+ lines of tedious boilerplate code</span>
+<span class="text-purple-400">const</span> select = document.<span class="text-blue-400">createElement</span>(<span class="text-emerald-300">'select'</span>);
+select.className = <span class="text-emerald-300">'w-full px-3 py-2 border rounded-md font-sans text-sm...'</span>;
+select.<span class="text-blue-400">setAttribute</span>(<span class="text-emerald-300">'required'</span>, <span class="text-emerald-300">'true'</span>);
+select.<span class="text-blue-400">setAttribute</span>(<span class="text-emerald-300">'autofocus'</span>, <span class="text-emerald-300">'true'</span>);
+
+<span class="text-purple-400">const</span> opt1 = document.<span class="text-blue-400">createElement</span>(<span class="text-emerald-300">'option'</span>);
+opt1.value = <span class="text-emerald-300">'1'</span>; opt1.textContent = <span class="text-emerald-300">'Option 1'</span>;
+select.<span class="text-blue-400">appendChild</span>(opt1);
+
+select.<span class="text-blue-400">addEventListener</span>(<span class="text-emerald-300">'change'</span>, (e) => {
+    <span class="text-purple-400">try</span> { myCustomCallback(e); } <span class="text-purple-400">catch</span>(err) { console.<span class="text-blue-400">error</span>(err); }
+});</code></pre>
+                </div>
+
+                <!-- THE MAGIC WEB COMPONENT WAY (1 LINE MAGIC) -->
+                <div class="hero-card p-6 rounded-2xl border-emerald-200 relative overflow-hidden bg-emerald-50/30">
+                    <div class="absolute top-0 right-0 bg-emerald-100 text-emerald-800 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-bl-lg border-l border-b border-emerald-200">
+                        ⚡ The Web Component Magic (1 Line!)
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-700 mb-3">Our Atomic Web Component Tag</h3>
+                    <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+                        Pass your JSON options directly to a single declarative HTML tag. Built-in validation, styling tokens, and safe event wrappers execute automatically!
+                    </p>
+                    <pre class="code-dark p-4 rounded-xl text-[11px] font-mono text-emerald-300 overflow-x-auto border border-slate-800 mb-4 whitespace-pre-wrap break-all"><code><span class="text-slate-500">&lt;!-- Just 1 single declarative custom tag! --&gt;</span>
+&lt;<span class="text-purple-400">ks-table-cell-content-common</span>
+  <span class="text-sky-300">control-type</span>=<span class="text-amber-300">"select"</span>
+  <span class="text-sky-300">theme</span>=<span class="text-amber-300">"primary"</span>
+  <span class="text-sky-300">autofocus</span>=<span class="text-amber-300">"true"</span>&gt;
+&lt;/<span class="text-purple-400">ks-table-cell-content-common</span>&gt;</code></pre>
+
+                    <!-- LIVE INTERACTIVE MINI DEMO INSIDE CARD -->
+                    <div class="bg-white p-3.5 rounded-xl border border-slate-200 flex items-center justify-between shadow-sm">
+                        <span class="text-xs text-slate-600 font-semibold">Live Output Preview:</span>
+                        <select class="bg-slate-50 border border-slate-300 rounded-md px-3 py-1 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-indigo-500">
+                            <option>Selected Option A</option>
+                            <option>Option B</option>
+                            <option>Option C</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEPARATION OF CONCERNS (SOC) ARCHITECTURAL STORY -->
+        <section class="hero-card p-8 rounded-3xl border-indigo-200 space-y-6 bg-gradient-to-br from-white to-indigo-50/40">
+            <div class="flex items-center justify-between flex-wrap gap-4 border-b border-slate-200 pb-4">
+                <div class="space-y-1">
+                    <span class="text-xs font-bold uppercase tracking-wider text-indigo-700 bg-indigo-100 px-3 py-1 rounded-full border border-indigo-200">Architectural Philosophy</span>
+                    <h2 class="text-2xl font-bold text-slate-900">Separation of Concerns (SOC): High-Level vs Atomic</h2>
+                </div>
+                <span class="text-xs bg-emerald-100 text-emerald-800 px-3 py-1.5 rounded-full font-bold border border-emerald-200">SOC Principle Verified ✓</span>
+            </div>
+
+            <p class="text-sm text-slate-700 leading-relaxed">
+                Why didn't we put all cell-rendering code inside <code class="text-indigo-700 font-mono font-semibold">jsTableBuilderViews</code>? Because a good system separates concerns! <strong>`jsTableBuilderViews`</strong> handles high-level layout orchestration (Tables, Forms, Cards), while <strong>`ks-web-components`</strong> owns the core atomic HTML building blocks.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2 hover:border-indigo-400 transition">
+                    <div class="text-indigo-700 font-bold text-sm flex items-center justify-between">
+                        <span>1. Higher-Level Orchestrator</span>
+                        <span class="text-[10px] font-mono bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded border border-indigo-200 font-bold">jsTableBuilderViews</span>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Coordinates table grids, vertical filter forms, sorting algorithms, dynamic row filtering, and target DOM node refreshing.
+                    </p>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-2 hover:border-emerald-400 transition">
+                    <div class="text-emerald-700 font-bold text-sm flex items-center justify-between">
+                        <span>2. Core Atomic Building Blocks</span>
+                        <span class="text-[10px] font-mono bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200 font-bold">ks-web-components</span>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Renders atomic custom element tags (<code class="text-indigo-600">&lt;ks-table-cell-content-common&gt;</code>), inputs, buttons, dropdowns, date pickers, and Tailwind CSS design tokens.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5 EXCITING INTERACTIVE STORY SHOWCASE CARDS -->
+        <section id="stories" class="space-y-8">
+            <div class="flex items-center justify-between flex-wrap gap-4">
+                <div>
+                    <h2 class="text-3xl font-extrabold text-slate-900">5 Interactive Feature Stories</h2>
+                    <p class="text-sm text-slate-600">Click into any story to explore live interactive component controls!</p>
+                </div>
+                <span class="text-xs text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full border border-emerald-300 font-bold">5/5 Stories Active</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Primitive Story: <label> Control -->
+                <a href="label-story.html" class="hero-card p-8 rounded-2xl border-indigo-300 hover:border-indigo-600 transition-all duration-300 hover:-translate-y-1 space-y-4 group md:col-span-2 bg-gradient-to-r from-white via-indigo-50/40 to-white">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-indigo-700 bg-indigo-100 px-3 py-1 rounded-full border border-indigo-200">Featured Primitive Story</span>
+                        <span class="text-xs text-indigo-600 font-mono font-bold">&lt;label&gt; Control Anchor</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 group-hover:text-indigo-600 transition">The Primitive Story of the &lt;label&gt; Control</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Before building giant tables or complex forms, master the primitive control on the left side of every input: <strong>The &lt;label&gt; Element</strong>. Explore label typography tokens, required asterisk badges (<span class="text-rose-600 font-bold">*</span>), accessibility binding, and horizontal vs vertical alignment!
+                    </p>
+                    <div class="pt-2 flex items-center text-xs font-bold text-indigo-600 group-hover:translate-x-1 transition">
+                        Explore Primitive &lt;label&gt; Story &rarr;
+                    </div>
+                </a>
+                
+                <!-- Story 1: Typography & Text Tokens -->
+                <a href="text.html" class="hero-card p-8 rounded-2xl border-slate-200 hover:border-blue-500 transition-all duration-300 hover:-translate-y-1 space-y-4 group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">Story 1</span>
+                        <span class="text-xs text-slate-500 font-mono">PREDEFINED_TEXT_CLASSES.json</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 group-hover:text-blue-600 transition">Typography & Cell Styling Tokens</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        How junior developers apply predefined Tailwind typography tokens for financial numbers, bold totals, badges, muted text, and header alignment instantly.
+                    </p>
+                    <div class="pt-2 flex items-center text-xs font-bold text-blue-600 group-hover:translate-x-1 transition">
+                        Explore Story 1 &rarr;
+                    </div>
+                </a>
+
+                <!-- Story 2: Button Styles & Themes -->
+                <a href="button.html" class="hero-card p-8 rounded-2xl border-slate-200 hover:border-teal-500 transition-all duration-300 hover:-translate-y-1 space-y-4 group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">Story 2</span>
+                        <span class="text-xs text-slate-500 font-mono">PREDEFINED_BUTTON_CLASSES.json</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 group-hover:text-teal-600 transition">Button Styles & Theme Registries</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Explore button themes including primary, secondary, success, danger, outline, and ghost variants designed for table cell actions and vertical form buttons.
+                    </p>
+                    <div class="pt-2 flex items-center text-xs font-bold text-teal-600 group-hover:translate-x-1 transition">
+                        Explore Story 2 &rarr;
+                    </div>
+                </a>
+
+                <!-- Story 3: Button Events & Interactions -->
+                <a href="button.html" class="hero-card p-8 rounded-2xl border-slate-200 hover:border-purple-500 transition-all duration-300 hover:-translate-y-1 space-y-4 group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-purple-700 bg-purple-50 px-3 py-1 rounded-full border border-purple-200">Story 3</span>
+                        <span class="text-xs text-slate-500 font-mono">Safe Event Wrappers</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 group-hover:text-purple-600 transition">Button Events & Safe Actions</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Interactive demo for <code class="text-indigo-600">onClick</code>, <code class="text-emerald-600">onMouseEnter</code>, <code class="text-purple-600">onMouseLeave</code>, safe error catchers, and control flow.
+                    </p>
+                    <div class="pt-2 flex items-center text-xs font-bold text-purple-600 group-hover:translate-x-1 transition">
+                        Explore Story 3 &rarr;
+                    </div>
+                </a>
+
+                <!-- Story 4: HTML Control Behaviors -->
+                <a href="behaviors.html" class="hero-card p-8 rounded-2xl border-slate-200 hover:border-amber-500 transition-all duration-300 hover:-translate-y-1 space-y-4 group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-amber-800 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">Story 4</span>
+                        <span class="text-xs text-slate-500 font-mono">Input Attributes</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 group-hover:text-amber-600 transition">Native Control Behaviors & Validation</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Test native input attributes: <code class="text-indigo-600">autofocus</code>, native hover title tooltips, <code class="text-purple-600">spellcheck</code> control, select dropdowns, datalist autocomplete, and <code class="text-rose-600">minlength</code> validation.
+                    </p>
+                    <div class="pt-2 flex items-center text-xs font-bold text-amber-600 group-hover:translate-x-1 transition">
+                        Explore Story 4 &rarr;
+                    </div>
+                </a>
+
+                <!-- Story 5: Master Table Integration View -->
+                <a href="table.html" class="hero-card p-8 rounded-2xl border-slate-200 hover:border-rose-500 transition-all duration-300 hover:-translate-y-1 space-y-4 group md:col-span-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-rose-700 bg-rose-50 px-3 py-1 rounded-full border border-rose-200">Story 5</span>
+                        <span class="text-xs text-slate-500 font-mono">Master Cell Integration</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 group-hover:text-rose-600 transition">Master Table Cell Integration View</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        The unified master showcase demonstrating how atomic Web Components render inside data table cell elements with combined JSON configurations.
+                    </p>
+                    <div class="pt-2 flex items-center text-xs font-bold text-rose-600 group-hover:translate-x-1 transition">
+                        Explore Story 5 &rarr;
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+    </div>
+</body>
+
+</html>

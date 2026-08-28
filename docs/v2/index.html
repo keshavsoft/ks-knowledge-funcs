@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KS Web Components Showcase Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 min-h-screen p-8 font-sans">
+    <div class="max-w-5xl mx-auto">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">KS Web Components Dashboard</h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Welcome to the version 2 showcase hub. From here, you can browse through interactive visual references for our design system classes and dynamically test our native HTML control behaviors.
+            </p>
+        </header>
+
+        <!-- Grid Container -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Text Showcase Card -->
+            <a href="text.html" class="group block bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden transform hover:-translate-y-1">
+                <div class="h-32 bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center">
+                    <svg class="w-12 h-12 text-white opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </div>
+                <div class="p-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">Typography & Text</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        Explore all text-related utility classes from <code>PREDEFINED_TEXT_CLASSES.json</code>. Includes standard styles, table headings, footers, and vertical alignment options.
+                    </p>
+                </div>
+            </a>
+
+            <!-- Button Showcase Card -->
+            <a href="button.html" class="group block bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden transform hover:-translate-y-1">
+                <div class="h-32 bg-gradient-to-r from-emerald-500 to-teal-600 flex items-center justify-center">
+                    <svg class="w-12 h-12 text-white opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg>
+                </div>
+                <div class="p-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-teal-600 transition-colors">Buttons & Actions</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        A dedicated visual reference for <code>PREDEFINED_BUTTON_CLASSES.json</code>. Test hover states, table cell buttons, outlines, and full-width vertical form buttons.
+                    </p>
+                </div>
+            </a>
+
+            <!-- HTML Behaviors Card -->
+            <a href="behaviors.html" class="group block bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden transform hover:-translate-y-1">
+                <div class="h-32 bg-gradient-to-r from-amber-500 to-orange-600 flex items-center justify-center">
+                    <svg class="w-12 h-12 text-white opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                </div>
+                <div class="p-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-orange-600 transition-colors">Component Behaviors</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        Dynamically tests how the <code>KsTableCellContent</code> component handles standard HTML attributes. Test autofocus, native tooltips, RTL text direction, and browser-based minimum length validation.
+                    </p>
+                </div>
+            </a>
+
+            <!-- Master Table Card -->
+            <a href="table.html" class="group block bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden transform hover:-translate-y-1">
+                <div class="h-32 bg-gradient-to-r from-purple-500 to-fuchsia-600 flex items-center justify-center">
+                    <svg class="w-12 h-12 text-white opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                </div>
+                <div class="p-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-fuchsia-600 transition-colors">Master Table View</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        The unified view showcasing all design styles across Texts, Buttons, and Inputs combined. Useful for a high-level overview of the entire design system's JSON configuration.
+                    </p>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</body>
+
+</html>

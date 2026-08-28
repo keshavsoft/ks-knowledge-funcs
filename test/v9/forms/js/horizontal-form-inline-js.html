@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizontal Form (JS)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="p-8 bg-gray-50 flex flex-col gap-8 max-w-4xl mx-auto mb-20">
+    <div id="four-rows-container" class="mb-4">
+        <h3 class="text-sm font-semibold text-gray-500 mb-2">3. Four Rows (Label and Input only)</h3>
+        <!-- Rows will be injected here -->
+    </div>
+
+    <script type="module" src="../../../../webComponents/v2/index.js"></script>
+    <script type="module">
+        const columns = ["Name", "Mobile"];
+        const fourRowsContainer = document.getElementById("four-rows-container");
+
+        // Create an array of column configurations (our schema)
+        const formSchema = columns.map(column => ({
+            theme: "split-30-70",
+            order: "label,input",
+            labelText: column,
+            inputType: "text",
+            inputPlaceholder: `Enter value for field ${column}...`
+        }));
+
+        // Instantiate the new parent composite
+        const form = document.createElement("ks-horizontal-form");
+
+        // Pass a single configuration object mimicking the JSON structure
+        form.config = {
+            head: {
+                showLabel: "User Registration",
+                theme: ""
+            },
+            body: {
+                columns: formSchema,
+                theme: ""
+            },
+            foot: {
+                buttons: [
+                    { text: "Cancel", theme: "cancel", type: "button" },
+                    { text: "Save Changes", theme: "save", type: "submit" }
+                ],
+                theme: ""
+            }
+        };
+
+        // Set the card theme
+        form.setAttribute("ks-theme", "inline");
+
+        // Append the single form element to the DOM
+        fourRowsContainer.appendChild(form);
+    </script>
+</body>
+
+</html>

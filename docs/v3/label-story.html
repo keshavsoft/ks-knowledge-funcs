@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Primitive Control Story: <label> - v3 Deep Dive 🚀</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        code, pre { font-family: 'Fira Code', monospace; }
+        .hero-card {
+            background: #ffffff;
+            box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+        .code-dark {
+            background: #0f172a;
+            color: #f8fafc;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 min-h-screen p-8 font-sans">
+    <div class="max-w-5xl mx-auto space-y-8">
+        
+        <!-- Header Nav -->
+        <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+            <a href="index.html" class="text-xs font-bold text-indigo-700 hover:underline flex items-center gap-1">
+                &larr; Back to Junior Developer Portal
+            </a>
+            <span class="text-xs bg-indigo-100 text-indigo-800 font-mono px-3 py-1 rounded-full border border-indigo-200 font-bold">
+                Primitive Control Deep Dive: &lt;label&gt;
+            </span>
+        </div>
+
+        <!-- Story Title Banner -->
+        <div class="hero-card p-8 rounded-3xl border-indigo-200 space-y-3 bg-gradient-to-r from-white to-indigo-50/50">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-indigo-700 bg-indigo-100 px-3 py-1 rounded-full border border-indigo-200">The Primitive Anchor</span>
+            <h1 class="text-3xl font-extrabold text-slate-900">The Full Story of the Primitive &lt;label&gt; Control</h1>
+            <p class="text-slate-600 text-sm leading-relaxed max-w-3xl">
+                Before building giant tables or complex forms, let's master the most fundamental primitive control on the left side of every input: <strong>The &lt;label&gt; Element</strong>. Discover how <code class="text-indigo-700 font-mono font-semibold">&lt;ks-table-cell-content-common&gt;</code> handles label text, typography tokens, required indicator badges, accessibility, and positioning!
+            </p>
+        </div>
+
+        <!-- STORY SECTIONS -->
+        <div class="space-y-6">
+
+            <!-- Part 1: What is the Label Control & Why it Matters -->
+            <div class="hero-card p-6 rounded-2xl border-slate-200 space-y-4">
+                <div class="flex items-center justify-between">
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full border border-indigo-200">Story Part 1</span>
+                    <span class="text-xs font-mono text-slate-500 font-bold">Accessibility & Semantics</span>
+                </div>
+                <h2 class="text-xl font-bold text-slate-900">1. Semantic Binding: Label + Input Pair</h2>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    A label isn't just text. It provides human context to the input control on its right. When bound via <code class="text-indigo-600 font-mono">for="fieldId"</code>, clicking the label automatically focuses the input box!
+                </p>
+
+                <!-- Visual Demo -->
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                    <label for="demo-input-1" class="block text-sm font-semibold text-slate-800 cursor-pointer hover:text-indigo-600 transition">
+                        Customer Voucher Number: <span class="text-xs text-slate-400 font-normal">(Click this label to focus input)</span>
+                    </label>
+                    <input id="demo-input-1" type="text" placeholder="e.g. VCH-2026-8890" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm font-mono shadow-sm focus:ring-2 focus:ring-indigo-500">
+                </div>
+
+                <pre class="code-dark p-3 rounded-lg text-[10px] font-mono text-indigo-300 border border-slate-800 whitespace-pre-wrap break-all"><code>&lt;<span class="text-purple-400">ks-table-cell-content-common</span>
+  <span class="text-sky-300">options</span>=<span class="text-amber-300">'{"label": "Customer Voucher Number", "id": "demo-input-1"}'</span>&gt;
+&lt;/<span class="text-purple-400">ks-table-cell-content-common</span>&gt;</code></pre>
+            </div>
+
+            <!-- Part 2: Label Typography Tokens -->
+            <div class="hero-card p-6 rounded-2xl border-slate-200 space-y-4">
+                <div class="flex items-center justify-between">
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full border border-indigo-200">Story Part 2</span>
+                    <span class="text-xs font-mono text-slate-500 font-bold">PREDEFINED_TEXT_CLASSES.json</span>
+                </div>
+                <h2 class="text-xl font-bold text-slate-900">2. Label Styling & Typography Tokens</h2>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Our central styling token map exports 6 distinct label themes (<code class="text-indigo-600 font-mono">vertical.text.*</code>) for standard fields, primary accents, alert fields, and large headers.
+                </p>
+
+                <!-- Token Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                    <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                        <span class="text-[10px] font-mono font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200">vertical.text.standard</span>
+                        <label class="block py-2 text-sm text-slate-700 font-medium">Standard Form Label</label>
+                    </div>
+
+                    <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                        <span class="text-[10px] font-mono font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200">vertical.text.primary</span>
+                        <label class="block py-2 text-sm font-semibold text-indigo-600">Primary Accent Label</label>
+                    </div>
+
+                    <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                        <span class="text-[10px] font-mono font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded border border-rose-200">vertical.text.danger</span>
+                        <label class="block py-2 text-sm font-bold text-rose-600">Required Alert Label</label>
+                    </div>
+
+                    <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                        <span class="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">vertical.text.success</span>
+                        <label class="block py-2 text-sm font-medium text-emerald-600">Verified Success Label</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part 3: Required Badge Indicator -->
+            <div class="hero-card p-6 rounded-2xl border-slate-200 space-y-4">
+                <div class="flex items-center justify-between">
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full border border-indigo-200">Story Part 3</span>
+                    <span class="text-xs font-mono text-slate-500 font-bold">Required Indicators</span>
+                </div>
+                <h2 class="text-xl font-bold text-slate-900">3. Automatic Required Asterisk Badge (<span class="text-rose-600">*</span>)</h2>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    When <code class="text-indigo-600 font-mono">required: true</code> is passed in options, the label automatically renders a sharp red asterisk badge (<span class="text-rose-600 font-bold">*</span>) notifying the user that the field is mandatory!
+                </p>
+
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                    <label class="block text-sm font-semibold text-slate-800">
+                        Stock Item Name <span class="text-rose-600 font-bold">*</span>
+                    </label>
+                    <input type="text" required placeholder="Enter mandatory item name..." class="w-full bg-white border border-rose-300 rounded-lg px-3 py-2 text-sm shadow-sm focus:ring-2 focus:ring-rose-500">
+                </div>
+
+                <pre class="code-dark p-3 rounded-lg text-[10px] font-mono text-indigo-300 border border-slate-800 whitespace-pre-wrap break-all"><code>&lt;<span class="text-purple-400">ks-table-cell-content-common</span>
+  <span class="text-sky-300">options</span>=<span class="text-amber-300">'{"label": "Stock Item Name", "required": true}'</span>&gt;
+&lt;/<span class="text-purple-400">ks-table-cell-content-common</span>&gt;</code></pre>
+            </div>
+
+            <!-- Part 4: Layout Alignment (Vertical vs Horizontal) -->
+            <div class="hero-card p-6 rounded-2xl border-slate-200 space-y-4">
+                <div class="flex items-center justify-between">
+                    <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full border border-indigo-200">Story Part 4</span>
+                    <span class="text-xs font-mono text-slate-500 font-bold">Layout Alignment</span>
+                </div>
+                <h2 class="text-xl font-bold text-slate-900">4. Label Alignment: Vertical Top vs Horizontal Left</h2>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    The primitive label control supports both top-stacked vertical layout and side-by-side horizontal alignment depending on form design.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Top Stacked -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                        <span class="text-[10px] font-mono font-bold text-slate-500 uppercase">A) Top Stacked Layout</span>
+                        <label class="block text-xs font-semibold text-slate-800">Email Address:</label>
+                        <input type="email" placeholder="john@example.com" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-1.5 text-xs">
+                    </div>
+
+                    <!-- Horizontal Left -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                        <span class="text-[10px] font-mono font-bold text-slate-500 uppercase">B) Horizontal Left Layout</span>
+                        <div class="flex items-center gap-3">
+                            <label class="text-xs font-semibold text-slate-800 whitespace-nowrap w-24">Email Address:</label>
+                            <input type="email" placeholder="john@example.com" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-1.5 text-xs">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
