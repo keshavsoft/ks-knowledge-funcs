@@ -27,7 +27,7 @@ export const renderAttributeControl = (ksAttributes) => {
 
     // 3. Look up the classes in themes.json
     const themeClasses = themes[themeName]?.[controlType];
-    console.log("themeClasses------- : ", themeName, controlType, themeClasses);
+    // console.log("themeClasses------- : ", themeName, controlType, themeClasses);
 
     // 4. Inject the classes
     if (themeClasses) {

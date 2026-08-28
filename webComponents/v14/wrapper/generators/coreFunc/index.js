@@ -1,7 +1,7 @@
 import insideFunc from "./insideFunc.js";
 import themes from "./themes.json" with { type: "json" };
 
-const startFunc = (inConfig) => {
+const startFunc = ({ inConfig, inClassName }) => {
     if (!inConfig) return null;
 
     if (inConfig.isArray && Array.isArray(inConfig?.elements)) {
@@ -29,7 +29,7 @@ const startFunc = (inConfig) => {
         return insideFunc({
             inConfig: inConfig, inTheme: inConfig.theme,
             inIsContainer: inConfig.isContainer,
-            inText: inConfig?.text,
+            inText: inConfig?.text, inClassName,
             inControlType: inConfig.controlType,
         });
     };

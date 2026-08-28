@@ -10,5 +10,11 @@
         "header": "ks-form-header font-semibold text-gray-800 mb-0 border-0 pb-0",
         "body": "flex flex-row items-center flex-wrap gap-4",
         "footer": "ks-form-footer flex items-center mt-0 pt-0 border-0 gap-2"
+    },
+    "inline-30-70": {
+        "wrapper": "flex flex-row items-center flex-wrap gap-4 w-full",
+        "header": "basis-[30%]",
+        "body": "flex-1",
+        "footer": "flex flex-row items-center gap-4"
     }
 }
