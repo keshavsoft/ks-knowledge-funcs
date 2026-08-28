@@ -17,7 +17,6 @@ class ksHorizontalForm extends HTMLElement {
 
         // 2. Apply wrapper theme styles
         applyThemeWrapper({ inContext: this, inTheme: localTheme });
-        // console.log("llllllllllllllll");
 
         // 3. Generate child elements
         const localElements = generateElements({ inConfig: localConfig, inTheme: localTheme });

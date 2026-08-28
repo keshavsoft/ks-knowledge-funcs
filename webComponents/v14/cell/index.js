@@ -15,9 +15,6 @@ class KsTableCellContent extends HTMLElement {
         const ksAttributes = pullAttributes(this);
         const controlElement = renderAttributeControl(ksAttributes);
 
-        // console.log("ksAttributes---- : ", this, ksAttributes);
-
-
         if (controlElement) {
             this.appendChild(controlElement);
         };

@@ -1,15 +1,15 @@
 import coreFunc from "./coreFunc/index.js";
+import insideFunc from "./coreFunc/insideFunc.js";
 
 export const generateElements = ({ inConfig, inTheme }) => {
     const localConfig = inConfig;
     const localTheme = inTheme;
-    // console.log("localTheme : ", localConfig, localTheme);
     let headElement = null;
     let bodyElement = null;
     let footElement = null;
 
     if ("head" in localConfig) {
-        headElement = coreFunc({
+        headElement = insideFunc({
             inConfig: localConfig.head, inTheme: localConfig.head.theme,
             inIsControl: localConfig.head.isControl,
             inText: localConfig.head.text,
@@ -18,7 +18,7 @@ export const generateElements = ({ inConfig, inTheme }) => {
     };
 
     if ("body" in localConfig) {
-        bodyElement = coreFunc({
+        bodyElement = insideFunc({
             inConfig: localConfig.body, inTheme: localConfig.body.theme,
             inIsControl: localConfig.body.isControl,
             inText: localConfig.body?.text,
@@ -27,13 +27,7 @@ export const generateElements = ({ inConfig, inTheme }) => {
         });
     };
 
-    footElement = coreFunc({
-        inConfig: localConfig.foot, inTheme: localConfig.foot.theme,
-        inIsControl: localConfig.foot.isControl,
-        inText: localConfig.foot?.text,
-        inControlType: localConfig.foot.controlType,
-        inValue: localConfig.foot?.value
-    });
+    footElement = coreFunc(localConfig.foot);
 
     return {
         head: headElement,

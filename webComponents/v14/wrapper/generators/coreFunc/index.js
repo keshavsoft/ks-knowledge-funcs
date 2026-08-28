@@ -1,35 +1,33 @@
-import { attributeMap } from "./constants/attributeMap.js";
-import { getHostClassName, getDefinedOverrides, applyConfigAttributes } from "./utils/attributes.js";
+import insideFunc from "./insideFunc.js";
+import loopFunc from "./loop.js";
 
-const startFunc = ({ inConfig = {}, inTheme = {}, inClassName = "", inIsControl,
-    inIsContainer, inText, inControlType, inValue, inList, inPlaceHolder }) => {
-
-    // console.log("inTheme : ", inTheme);
-
+const startFunc = (inConfig) => {
     if (!inConfig) return null;
+    // console.log("inConfig : ", inConfig);
 
-    if (inIsControl || inConfig.isControl) {
-        const createdCell = document.createElement("ks-cell-base");
+    if (inConfig.isArray && Array.isArray(inConfig?.elements)) {
+        const div = document.createElement("div");
 
-        const hostClassName = getHostClassName({ inConfig, inTheme, inClassName });
+        inConfig?.elements.forEach(element => {
+            div.appendChild(insideFunc({
+                inConfig: element, inTheme: element.theme,
+                inIsControl: element.isControl,
+                inText: element?.text,
+                inControlType: element.controlType,
+                inValue: element?.value
+            }));
+        });
 
-        const configAttributes = {
-            ...inConfig,
-            ...getDefinedOverrides({
-                inText, inControlType, inValue, inList, inPlaceHolder,
-                inTheme
-            })
-        };
+        return div;
+    };
 
-        // console.log("configAttributes : ", configAttributes);
-
-        if (hostClassName) {
-            createdCell.className = hostClassName;
-        };
-
-        applyConfigAttributes(createdCell, configAttributes, attributeMap);
-
-        return createdCell;
+    if (inConfig.isContainer) {
+        return insideFunc({
+            inConfig: inConfig, inTheme: inConfig.theme,
+            inIsContainer: inConfig.isContainer,
+            inText: inConfig?.text,
+            inControlType: inConfig.controlType,
+        });
     };
 };
 
