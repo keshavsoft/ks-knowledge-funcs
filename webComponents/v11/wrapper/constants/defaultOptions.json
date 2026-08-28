@@ -1,0 +1,60 @@
+{
+    "head": {
+        "showLabel": "KS Form",
+        "theme": ""
+    },
+    "body": {
+        "theme": "",
+        "columns": [
+            {
+                "theme": "split-30-70",
+                "order": "label,input",
+                "labelText": "Name",
+                "inputType": "text",
+                "inputPlaceholder": "Enter name..."
+            },
+            {
+                "theme": "split-30-70",
+                "order": "label,input",
+                "labelText": "Email",
+                "inputType": "email",
+                "inputPlaceholder": "Enter email..."
+            }
+        ]
+    },
+    "foot": {
+        "theme": "",
+        "buttons": [
+            {
+                "text": "Save",
+                "theme": "save",
+                "type": "submit"
+            },
+            {
+                "text": "Cancel",
+                "theme": "cancel",
+                "type": "button"
+            },
+            {
+                "text": "Edit",
+                "theme": "edit",
+                "type": "button"
+            },
+            {
+                "text": "Update",
+                "theme": "update",
+                "type": "button"
+            },
+            {
+                "text": "Add",
+                "theme": "add",
+                "type": "button"
+            }
+        ]
+    },
+    "order": [
+        "head",
+        "body",
+        "foot"
+    ]
+}
