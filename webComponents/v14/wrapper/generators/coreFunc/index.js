@@ -3,7 +3,7 @@ import themes from "./themes.json" with { type: "json" };
 
 const startFunc = ({ inConfig, inClassName }) => {
     if (!inConfig) return null;
-
+    // console.log("inConfig : ", inConfig);
     if (inConfig.isArray && Array.isArray(inConfig?.elements)) {
         const mainDiv = document.createElement("div");
 

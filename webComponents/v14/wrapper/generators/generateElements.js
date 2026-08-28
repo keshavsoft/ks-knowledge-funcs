@@ -24,7 +24,8 @@ export const generateElements = ({ inConfig, inTheme }) => {
         });
     };
 
-    footElement = coreFunc(localConfig.foot);
+    footElement = coreFunc({ inConfig: localConfig.foot, inClassName: localTheme?.foot });
+    // console.log("footElement : ", footElement, localConfig.foot);
 
     return {
         head: headElement,
