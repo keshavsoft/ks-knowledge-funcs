@@ -14,10 +14,16 @@
         <!-- Rows will be injected here -->
     </div>
 
-    <script type="module" src="../../webComponents/v3/index.js"></script>
+    <div id="inLineDivId" class="mb-4">
+        <h3 class="text-sm font-semibold text-gray-500 mb-2">inline</h3>
+        <!-- Rows will be injected here -->
+    </div>
+
+    <script type="module" src="../../webComponents/v4/index.js"></script>
     <script type="module">
         const columns = ["Name", "Mobile"];
         const fourRowsContainer = document.getElementById("four-rows-container");
+        const inLineDivId = document.getElementById("inLineDivId");
 
         // Create an array of column configurations (our schema)
         const formSchema = columns.map(column => ({
@@ -51,11 +57,14 @@
         };
 
         // Set the card theme
-        form.setAttribute("ks-theme", "inline");
+        // form.setAttribute("ks-theme", "inline");
 
         // Append the single form element to the DOM
         fourRowsContainer.appendChild(form);
+        // inLineDivId.appendChild(form);
     </script>
+    <script type="module" src="inline.js"></script>
+
 </body>
 
 </html>
