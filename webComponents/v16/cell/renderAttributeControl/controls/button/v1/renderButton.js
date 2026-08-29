@@ -1,4 +1,4 @@
-import { applyButtonAttributes, applyCommonAttributes } from "../../applyAttributes.js";
+import { applyButtonAttributes, applyCommonAttributes } from "../../../applyAttributes.js";
 import { createElement } from "./createElement.js";
 import { attachEvents } from "./attachEvents.js";
 

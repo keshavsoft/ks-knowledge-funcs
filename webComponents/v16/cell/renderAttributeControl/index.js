@@ -1,7 +1,7 @@
-import { renderButton } from "./controls/button/renderButton.js";
+import { renderButton } from "./controls/button/v3/renderButton.js";
 import { renderCheckbox } from "./controls/renderCheckbox.js";
-import renderInput from "./controls/input/v1/index.js";
-import renderLabel from "./controls/label/v2/index.js";
+import renderInput from "./controls/input/v3/index.js";
+import renderLabel from "./controls/label/v3/index.js";
 
 import themes from "../constants/themes.json" with { type: "json" };
 

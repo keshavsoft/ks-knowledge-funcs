@@ -1,3 +1,5 @@
+import { attachEvents } from "../../attachEvents.js";
+
 const COMMON_ATTRIBUTES = {
     "aria-described-by": "aria-describedby",
     "aria-label": "aria-label",
@@ -10,8 +12,10 @@ const COMMON_ATTRIBUTES = {
     "title": "title"
 };
 
-const LABEL_ATTRIBUTES = {
-    "for": "for"
+const BUTTON_ATTRIBUTES = {
+    "form": "form",
+    "type": "type",
+    "value": "value"
 };
 
 const getCommonAttributes = ({ inKsAttributes }) => {
@@ -33,12 +37,12 @@ const getCommonAttributes = ({ inKsAttributes }) => {
     return localResult;
 };
 
-const getLabelAttributes = ({ inKsAttributes }) => {
+const getButtonAttributes = ({ inKsAttributes }) => {
     const localKsAttributes = inKsAttributes || {};
     const localResult = {};
 
-    for (const [ksKey, attrName] of Object.entries(LABEL_ATTRIBUTES)) {
-        const val = localKsAttributes[ksKey] ?? localKsAttributes[attrName] ?? localKsAttributes["htmlFor"];
+    for (const [ksKey, attrName] of Object.entries(BUTTON_ATTRIBUTES)) {
+        const val = localKsAttributes[ksKey] ?? localKsAttributes[attrName];
         if (val !== undefined && val !== "") {
             localResult[attrName] = val;
         }
@@ -47,30 +51,45 @@ const getLabelAttributes = ({ inKsAttributes }) => {
     return localResult;
 };
 
-const startFunc = ({ inKsAttributes }) => {
-    const localKsAttributes = inKsAttributes;
-    const label = document.createElement("label");
+const createElement = ({ inKsAttributes }) => {
+    const localKsAttributes = inKsAttributes || {};
 
-    // 1. Text Content
-    label.textContent = localKsAttributes?.["text"] || localKsAttributes?.["labelText"] || localKsAttributes?.text || localKsAttributes?.labelText || "";
+    const element = document.createElement("button");
+
+    // Set basic properties
+    element.textContent = localKsAttributes["text"] || localKsAttributes["labelText"] || localKsAttributes["text"] || "";
+    element.disabled = localKsAttributes["disabled"] === true || localKsAttributes["disabled"] === "true";
+
+    return element;
+};
+
+export const renderButton = ({ inKsAttributes } = {}) => {
+    const localKsAttributes = inKsAttributes || {};
+
+    // 1. Create Element
+    const button = createElement({ inKsAttributes: localKsAttributes });
 
     // 2. Extract Attribute Configurations as Objects
     const localCommonAttrs = getCommonAttributes({ inKsAttributes: localKsAttributes });
-    const localLabelAttrs = getLabelAttributes({ inKsAttributes: localKsAttributes });
+    const localButtonAttrs = getButtonAttributes({ inKsAttributes: localKsAttributes });
 
     // 3. Combine Attributes
-    const localFinalAttrs = { ...localCommonAttrs, ...localLabelAttrs };
+    const localFinalAttrs = { ...localCommonAttrs, ...localButtonAttrs };
 
     // 4. Apply Attributes to DOM Element
     Object.entries(localFinalAttrs).forEach(([attrName, val]) => {
         if (attrName === "class") {
-            label.className = val;
+            button.className = val;
         } else {
-            label.setAttribute(attrName, val);
+            button.setAttribute(attrName, val);
         }
     });
 
-    return label;
+    // 5. Attach Events
+    attachEvents({ inInput: button, inKsAttributes: localKsAttributes });
+
+    // 6. Return the element
+    return button;
 };
 
-export default startFunc;
+export default renderButton;
