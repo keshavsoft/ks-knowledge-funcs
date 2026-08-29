@@ -27,6 +27,6 @@ class KsTableCellContent extends HTMLElement {
 registerComponent({
     inComponentClass: KsTableCellContent,
     inTagName: "ks-cell-base",
-    inVersion: "v11",
+    inVersion: "v17",
     inNamespaceKey: "classes"
 });
