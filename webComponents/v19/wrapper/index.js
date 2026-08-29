@@ -29,6 +29,6 @@ class ksHorizontalForm extends HTMLElement {
 registerComponent({
     inComponentClass: ksHorizontalForm,
     inTagName: "ks-wrapper-base",
-    inVersion: "v7",
+    inVersion: "v19",
     inNamespaceKey: "composite"
 });
