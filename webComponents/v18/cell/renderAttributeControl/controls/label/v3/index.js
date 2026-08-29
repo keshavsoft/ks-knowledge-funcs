@@ -10,9 +10,8 @@ const COMMON_ATTRIBUTES = {
     "title": "title"
 };
 
-const CHECKBOX_ATTRIBUTES = {
-    "form": "form",
-    "value": "value"
+const LABEL_ATTRIBUTES = {
+    "for": "for"
 };
 
 const getCommonAttributes = ({ inKsAttributes }) => {
@@ -34,12 +33,12 @@ const getCommonAttributes = ({ inKsAttributes }) => {
     return localResult;
 };
 
-const getCheckboxAttributes = ({ inKsAttributes }) => {
+const getLabelAttributes = ({ inKsAttributes }) => {
     const localKsAttributes = inKsAttributes || {};
     const localResult = {};
 
-    for (const [ksKey, attrName] of Object.entries(CHECKBOX_ATTRIBUTES)) {
-        const val = localKsAttributes[ksKey] ?? localKsAttributes[attrName];
+    for (const [ksKey, attrName] of Object.entries(LABEL_ATTRIBUTES)) {
+        const val = localKsAttributes[ksKey] ?? localKsAttributes[attrName] ?? localKsAttributes["htmlFor"];
         if (val !== undefined && val !== "") {
             localResult[attrName] = val;
         }
@@ -48,24 +47,18 @@ const getCheckboxAttributes = ({ inKsAttributes }) => {
     return localResult;
 };
 
-export const renderCheckbox = ({ inKsAttributes } = {}) => {
+const startFunc = ({ inKsAttributes }) => {
     const localKsAttributes = inKsAttributes || {};
 
     const localCommonAttrs = getCommonAttributes({ inKsAttributes: localKsAttributes });
-    const localCheckboxAttrs = getCheckboxAttributes({ inKsAttributes: localKsAttributes });
-
-    const isChecked = localKsAttributes["checked"] === true || localKsAttributes["checked"] === "true" || localKsAttributes["value"] === "true";
+    const localLabelAttrs = getLabelAttributes({ inKsAttributes: localKsAttributes });
 
     return {
-        tagName: "input",
-        properties: {
-            type: "checkbox",
-            checked: isChecked,
-            value: localKsAttributes["value"] || ""
-        },
-        attributes: { ...localCommonAttrs, ...localCheckboxAttrs },
+        tagName: "label",
+        textContent: localKsAttributes["text"] || localKsAttributes["labelText"] || "",
+        attributes: { ...localCommonAttrs, ...localLabelAttrs },
         events: {}
     };
 };
 
-export default renderCheckbox;
+export default startFunc;

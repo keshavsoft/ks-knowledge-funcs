@@ -10,8 +10,9 @@ const COMMON_ATTRIBUTES = {
     "title": "title"
 };
 
-const CHECKBOX_ATTRIBUTES = {
+const BUTTON_ATTRIBUTES = {
     "form": "form",
+    "type": "type",
     "value": "value"
 };
 
@@ -34,11 +35,11 @@ const getCommonAttributes = ({ inKsAttributes }) => {
     return localResult;
 };
 
-const getCheckboxAttributes = ({ inKsAttributes }) => {
+const getButtonAttributes = ({ inKsAttributes }) => {
     const localKsAttributes = inKsAttributes || {};
     const localResult = {};
 
-    for (const [ksKey, attrName] of Object.entries(CHECKBOX_ATTRIBUTES)) {
+    for (const [ksKey, attrName] of Object.entries(BUTTON_ATTRIBUTES)) {
         const val = localKsAttributes[ksKey] ?? localKsAttributes[attrName];
         if (val !== undefined && val !== "") {
             localResult[attrName] = val;
@@ -48,24 +49,33 @@ const getCheckboxAttributes = ({ inKsAttributes }) => {
     return localResult;
 };
 
-export const renderCheckbox = ({ inKsAttributes } = {}) => {
+const getEvents = ({ inKsAttributes }) => {
+    const localKsAttributes = inKsAttributes || {};
+    const localEvents = {};
+
+    localEvents["click"] = (event) => {
+        console.log("Button clicked event : ", event);
+    };
+
+    return localEvents;
+};
+
+export const renderButton = ({ inKsAttributes } = {}) => {
     const localKsAttributes = inKsAttributes || {};
 
     const localCommonAttrs = getCommonAttributes({ inKsAttributes: localKsAttributes });
-    const localCheckboxAttrs = getCheckboxAttributes({ inKsAttributes: localKsAttributes });
-
-    const isChecked = localKsAttributes["checked"] === true || localKsAttributes["checked"] === "true" || localKsAttributes["value"] === "true";
+    const localButtonAttrs = getButtonAttributes({ inKsAttributes: localKsAttributes });
+    const localEvents = getEvents({ inKsAttributes: localKsAttributes });
 
     return {
-        tagName: "input",
+        tagName: "button",
+        textContent: localKsAttributes["text"] || localKsAttributes["labelText"] || "",
         properties: {
-            type: "checkbox",
-            checked: isChecked,
-            value: localKsAttributes["value"] || ""
+            disabled: localKsAttributes["disabled"] === true || localKsAttributes["disabled"] === "true"
         },
-        attributes: { ...localCommonAttrs, ...localCheckboxAttrs },
-        events: {}
+        attributes: { ...localCommonAttrs, ...localButtonAttrs },
+        events: localEvents
     };
 };
 
-export default renderCheckbox;
+export default renderButton;
