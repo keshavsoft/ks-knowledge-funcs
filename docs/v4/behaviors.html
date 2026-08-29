@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Behaviors Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 p-8 font-sans">
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+        <h1 class="text-3xl font-extrabold text-gray-900 mb-2">HTML Behaviors Showcase</h1>
+        <p class="text-gray-500 mb-8 text-lg">Testing the standard HTML attributes added to <code>renderInputControl</code>.</p>
+
+        <form onsubmit="event.preventDefault(); alert('Form submitted natively!');" class="space-y-6" id="dynamic-container">
+            <!-- Dynamically created components will be appended here -->
+            
+            <div class="pt-6 border-t border-gray-200 flex justify-end">
+                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-md shadow-sm">
+                    Test Native Form Submission
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://keshavsoft.github.io/ks-web-components/dist/v10/ks-web-components.js" type="module"></script>
+    <script type="module">
+
+        const container = document.getElementById('dynamic-container');
+
+        const testCases = [
+            {
+                label: "Autofocus (Should be focused on load)",
+                cellValue: "",
+                options: { controlType: "text", showInput: true, autofocus: true, placeholder: "I have autofocus: true", theme: "verticalStandard" }
+            },
+            {
+                label: "tabIndex: -1 (Cannot tab into this)",
+                cellValue: "Try using 'Tab' to focus me - it won't work",
+                options: { controlType: "text", showInput: true, tabIndex: -1, theme: "verticalStandard" }
+            },
+            {
+                label: "Title (Native Tooltip)",
+                cellValue: "",
+                options: { controlType: "text", showInput: true, title: "This is a native HTML tooltip provided by the title attribute!", placeholder: "Hover over me to see tooltip...", theme: "verticalStandard" }
+            },
+            {
+                label: "Spellcheck Disabled",
+                cellValue: "Teh qcuik bworhn foxx (no red squiggles)",
+                options: { controlType: "text", showInput: true, spellcheck: false, theme: "verticalStandard" }
+            },
+            {
+                label: "Direction RTL (Right-to-Left)",
+                cellValue: "مرحبا بالعالم",
+                options: { controlType: "text", showInput: true, dir: "rtl", theme: "verticalStandard" }
+            },
+            {
+                label: "Autocomplete (Email)",
+                cellValue: "",
+                options: { controlType: "email", showInput: true, autocomplete: "email", placeholder: "Start typing email (triggers browser autofill)", theme: "verticalStandard" }
+            },
+            {
+                label: "Size Constraint (Visual width: 15 chars)",
+                cellValue: "",
+                options: { controlType: "text", showInput: true, size: 15, placeholder: "15 chars wide...", theme: "default" }
+            },
+            {
+                label: "Native MinLength / MaxLength constraints",
+                cellValue: "Too short",
+                options: { controlType: "text", showInput: true, minLength: 15, maxLength: 20, theme: "verticalStandard" }
+            }
+        ];
+
+        // Insert before the submit button
+        const submitButtonDiv = container.querySelector('.border-t');
+
+        testCases.forEach((tc) => {
+            // 1. Create wrapper
+            const wrapper = document.createElement('div');
+            wrapper.className = "flex flex-col space-y-2 p-5 border border-gray-100 rounded-lg bg-gray-50 hover:border-blue-300 transition-colors";
+
+            // 2. Create label
+            const label = document.createElement('label');
+            label.className = "text-sm font-semibold text-gray-700 tracking-wide";
+            label.textContent = tc.label;
+
+            const codeDesc = document.createElement('code');
+            codeDesc.className = "text-xs text-blue-600 block mb-2";
+            // Filter out boilerplate options for display
+            const displayOpts = { ...tc.options };
+            delete displayOpts.showInput;
+            delete displayOpts.theme;
+            delete displayOpts.controlType;
+            codeDesc.textContent = JSON.stringify(displayOpts);
+
+            // 3. Programmatically CREATE the custom Web Component
+            const cellComponent = document.createElement("ks-table-cell-content-common");
+
+            // 4. Set inputs via JS property
+            cellComponent.inputs = {
+                cellValue: tc.cellValue,
+                rowData: { id: 1 },
+                options: tc.options
+            };
+
+            // 5. Append everything to DOM
+            wrapper.appendChild(label);
+            wrapper.appendChild(codeDesc);
+            wrapper.appendChild(cellComponent);
+            
+            container.insertBefore(wrapper, submitButtonDiv);
+        });
+    </script>
+</body>
+
+</html>

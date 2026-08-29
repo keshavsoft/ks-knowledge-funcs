@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Components Styles Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 p-8 font-sans">
+    <div class="max-w-6xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+        <h1 class="text-3xl font-extrabold text-gray-900 mb-2">Text Classes Showcase</h1>
+        <p class="text-gray-500 mb-8 text-lg">Interactive reference for <code>PREDEFINED_TEXT_CLASSES.json</code>.</p>
+
+        <!-- Sub Category Tabs Navigation -->
+        <div class="flex space-x-2 border-b border-gray-200 mb-6 pb-2 overflow-x-auto" id="sub-tabs-container">
+            <!-- Sub Tabs injected here -->
+        </div>
+
+        <div id="showcase-container" class="grid grid-cols-1 lg:grid-cols-2 gap-6"></div>
+    </div>
+
+    <script src="https://keshavsoft.github.io/ks-web-components/dist/v12/ks-web-components.js" type="module"></script>
+    <script type="module">
+
+        const TEXT_CLASSES = window.ks.webComponents.KsTableCellContent.PREDEFINED_TEXT_CLASSES;
+
+        const container = document.getElementById('showcase-container');
+        const subTabsContainer = document.getElementById('sub-tabs-container');
+
+        // Helper to flatten nested JSON object into dot-separated keys
+        function flattenObject(obj, prefix = '') {
+            return Object.keys(obj).reduce((acc, k) => {
+                const pre = prefix.length ? prefix + '.' : '';
+                if (typeof obj[k] === 'object' && obj[k] !== null) {
+                    Object.assign(acc, flattenObject(obj[k], pre + k));
+                } else {
+                    acc[pre + k] = obj[k];
+                }
+                return acc;
+            }, {});
+        }
+
+        const flattenedText = flattenObject(TEXT_CLASSES);
+        let activeSubTab = 'All';
+
+        const subCategories = [
+            { id: 'All', label: 'All Classes', filter: () => true },
+            { id: 'TableHead', label: 'Table Head', filter: (k) => k.startsWith('table.head') },
+            { id: 'TableBody', label: 'Table Body', filter: (k) => k.startsWith('table.cell') || k.startsWith('tableCell') },
+            { id: 'TableFoot', label: 'Table Foot', filter: (k) => k.startsWith('table.foot') },
+            { id: 'Vertical', label: 'Vertical Forms', filter: (k) => k.startsWith('vertical') },
+            { id: 'Misc', label: 'Other', filter: (k) => k === 'default' || (!k.includes('.') && !k.startsWith('table') && !k.startsWith('vertical')) }
+        ];
+
+        function renderTabs() {
+            subTabsContainer.innerHTML = '';
+            subCategories.forEach(cat => {
+                const btn = document.createElement('button');
+                const isActive = activeSubTab === cat.id;
+
+                btn.className = `px-4 py-1.5 text-sm font-medium rounded-t-lg transition-colors whitespace-nowrap ${isActive
+                    ? 'bg-blue-50 text-blue-700 border-b-2 border-blue-500'
+                    : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+                    }`;
+                btn.textContent = cat.label;
+                btn.onclick = () => {
+                    activeSubTab = cat.id;
+                    renderTabs();
+                    renderCards();
+                };
+                subTabsContainer.appendChild(btn);
+            });
+        }
+
+        function renderCards() {
+            container.innerHTML = '';
+            const activeSub = subCategories.find(c => c.id === activeSubTab);
+
+            Object.entries(flattenedText)
+                .filter(([key]) => activeSub.filter(key))
+                .forEach(([key, className]) => {
+                    const wrapper = document.createElement('div');
+                    wrapper.className = "flex flex-col space-y-3 p-5 border border-gray-200 rounded-xl bg-gray-50 hover:border-blue-400 hover:shadow-md transition-all";
+
+                    const header = document.createElement('div');
+                    header.className = "flex flex-col gap-1 border-b border-gray-200 pb-3";
+
+                    const title = document.createElement('h3');
+                    title.className = "font-bold text-blue-800 text-lg tracking-tight";
+                    title.textContent = key;
+
+                    const code = document.createElement('code');
+                    code.className = "text-[11px] text-gray-500 bg-gray-200 px-2 py-1 rounded break-words font-mono";
+                    code.textContent = className;
+
+                    header.appendChild(title);
+                    header.appendChild(code);
+
+                    const previewWrapper = document.createElement('div');
+                    previewWrapper.className = "p-6 bg-white border border-gray-200 rounded-lg flex items-center justify-center min-h-[100px] shadow-inner overflow-hidden";
+
+                    const previewElement = document.createElement('span');
+                    let sampleText = "Preview Text";
+                    if (key.includes('numeric')) sampleText = "1,234.56";
+                    if (key.includes('total')) sampleText = "Total: $99.99";
+                    if (key.includes('head')) sampleText = "COLUMN HEADER";
+                    previewElement.textContent = sampleText;
+
+                    previewElement.className = className;
+                    previewWrapper.appendChild(previewElement);
+
+                    wrapper.appendChild(header);
+                    wrapper.appendChild(previewWrapper);
+
+                    container.appendChild(wrapper);
+                });
+        }
+
+        // Initial render
+        renderTabs();
+        renderCards();
+    </script>
+</body>
+
+</html>

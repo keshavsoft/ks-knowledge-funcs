@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Components Styles Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 p-8 font-sans">
+    <div class="max-w-6xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+        <h1 class="text-3xl font-extrabold text-gray-900 mb-2">Web Components Styles Showcase</h1>
+        <p class="text-gray-500 mb-8 text-lg">Interactive reference for your Text, Button, and Input JSON classes.</p>
+
+        <!-- Main Category Tabs Navigation -->
+        <div class="flex space-x-2 border-b border-gray-300 mb-6 pb-2 overflow-x-auto" id="main-tabs-container">
+            <!-- Main Tabs injected here -->
+        </div>
+        
+        <!-- Sub Category Tabs Navigation -->
+        <div class="flex space-x-2 border-b border-gray-200 mb-6 pb-2 overflow-x-auto" id="sub-tabs-container">
+            <!-- Sub Tabs injected here -->
+        </div>
+
+        <div id="showcase-container" class="grid grid-cols-1 lg:grid-cols-2 gap-6"></div>
+    </div>
+
+    <script src="https://keshavsoft.github.io/ks-web-components/dist/v10/ks-web-components.js" type="module"></script>
+    <script type="module">
+
+        const TEXT_CLASSES = window.ks.webComponents.KsTableCellContent.PREDEFINED_TEXT_CLASSES;
+        const BUTTON_CLASSES = window.ks.webComponents.KsTableCellContent.PREDEFINED_BUTTON_CLASSES;
+        const INPUT_CLASSES = window.ks.webComponents.KsTableCellContent.PREDEFINED_CLASSES;
+
+        const container = document.getElementById('showcase-container');
+        const mainTabsContainer = document.getElementById('main-tabs-container');
+        const subTabsContainer = document.getElementById('sub-tabs-container');
+
+        // Helper to flatten nested JSON object into dot-separated keys
+        function flattenObject(obj, prefix = '') {
+            return Object.keys(obj).reduce((acc, k) => {
+                const pre = prefix.length ? prefix + '.' : '';
+                if (typeof obj[k] === 'object' && obj[k] !== null) {
+                    Object.assign(acc, flattenObject(obj[k], pre + k));
+                } else {
+                    acc[pre + k] = obj[k];
+                }
+                return acc;
+            }, {});
+        }
+
+        const flattenedText = flattenObject(TEXT_CLASSES);
+        const flattenedButton = flattenObject(BUTTON_CLASSES);
+        const flattenedInput = flattenObject(INPUT_CLASSES);
+
+        let activeMainTab = 'Text';
+        let activeSubTab = 'All';
+
+        const mainCategories = [
+            { id: 'Text', label: 'Text Styles', data: flattenedText },
+            { id: 'Button', label: 'Button Styles', data: flattenedButton },
+            { id: 'Input', label: 'Input Styles', data: flattenedInput }
+        ];
+
+        // We can reuse sub categories for filtering keys
+        const subCategories = [
+            { id: 'All', label: 'All Classes', filter: () => true },
+            { id: 'TableHead', label: 'Table Head', filter: (k) => k.startsWith('table.head') },
+            { id: 'TableBody', label: 'Table Body', filter: (k) => k.startsWith('table.cell') || k.startsWith('tableCell') },
+            { id: 'TableFoot', label: 'Table Foot', filter: (k) => k.startsWith('table.foot') },
+            { id: 'Vertical', label: 'Vertical Forms', filter: (k) => k.startsWith('vertical') },
+            { id: 'NestedButton', label: 'Nested Buttons', filter: (k) => k.startsWith('button.') },
+            { id: 'Misc', label: 'Other', filter: (k) => k === 'default' || (!k.includes('.') && !k.startsWith('table') && !k.startsWith('vertical')) }
+        ];
+
+        function renderTabs() {
+            mainTabsContainer.innerHTML = '';
+            mainCategories.forEach(cat => {
+                const btn = document.createElement('button');
+                const isActive = activeMainTab === cat.id;
+                
+                btn.className = `px-5 py-2.5 text-base font-bold rounded-t-lg transition-colors whitespace-nowrap ${
+                    isActive 
+                    ? 'bg-blue-600 text-white border-b-2 border-blue-800 shadow-sm' 
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                }`;
+                btn.textContent = cat.label;
+                btn.onclick = () => {
+                    activeMainTab = cat.id;
+                    activeSubTab = 'All'; // reset sub tab
+                    renderTabs();
+                    renderCards();
+                };
+                mainTabsContainer.appendChild(btn);
+            });
+
+            subTabsContainer.innerHTML = '';
+            subCategories.forEach(cat => {
+                const btn = document.createElement('button');
+                const isActive = activeSubTab === cat.id;
+                
+                btn.className = `px-4 py-1.5 text-sm font-medium rounded-t-lg transition-colors whitespace-nowrap ${
+                    isActive 
+                    ? 'bg-blue-50 text-blue-700 border-b-2 border-blue-500' 
+                    : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+                }`;
+                btn.textContent = cat.label;
+                btn.onclick = () => {
+                    activeSubTab = cat.id;
+                    renderTabs();
+                    renderCards();
+                };
+                subTabsContainer.appendChild(btn);
+            });
+        }
+
+        function renderCards() {
+            container.innerHTML = '';
+            const activeMain = mainCategories.find(c => c.id === activeMainTab);
+            const activeSub = subCategories.find(c => c.id === activeSubTab);
+
+            Object.entries(activeMain.data)
+                .filter(([key]) => activeSub.filter(key))
+                .forEach(([key, className]) => {
+                    const wrapper = document.createElement('div');
+                    wrapper.className = "flex flex-col space-y-3 p-5 border border-gray-200 rounded-xl bg-gray-50 hover:border-blue-400 hover:shadow-md transition-all";
+
+                    const header = document.createElement('div');
+                    header.className = "flex flex-col gap-1 border-b border-gray-200 pb-3";
+                    
+                    const title = document.createElement('h3');
+                    title.className = "font-bold text-blue-800 text-lg tracking-tight";
+                    title.textContent = key;
+
+                    const code = document.createElement('code');
+                    code.className = "text-[11px] text-gray-500 bg-gray-200 px-2 py-1 rounded break-words font-mono";
+                    code.textContent = className;
+
+                    header.appendChild(title);
+                    header.appendChild(code);
+
+                    const previewWrapper = document.createElement('div');
+                    previewWrapper.className = "p-6 bg-white border border-gray-200 rounded-lg flex items-center justify-center min-h-[100px] shadow-inner overflow-hidden";
+                    
+                    // Create the right DOM element based on main category
+                    let previewElement;
+                    if (activeMainTab === 'Button') {
+                        previewElement = document.createElement('button');
+                        previewElement.textContent = "Button";
+                    } else if (activeMainTab === 'Input') {
+                        previewElement = document.createElement('input');
+                        previewElement.placeholder = "Enter value...";
+                        previewElement.type = "text";
+                    } else {
+                        previewElement = document.createElement('span');
+                        let sampleText = "Preview Text";
+                        if (key.includes('numeric')) sampleText = "1,234.56";
+                        if (key.includes('total')) sampleText = "Total: $99.99";
+                        if (key.includes('head')) sampleText = "COLUMN HEADER";
+                        previewElement.textContent = sampleText;
+                    }
+                    
+                    previewElement.className = className;
+                    
+                    // If it's a huge wrapper input (like verticalNoLabel), make it fit
+                    if (activeMainTab === 'Input') {
+                        previewWrapper.className += " w-full"; 
+                        previewElement.className += " w-full max-w-full";
+                    }
+
+                    previewWrapper.appendChild(previewElement);
+
+                    wrapper.appendChild(header);
+                    wrapper.appendChild(previewWrapper);
+                    
+                    container.appendChild(wrapper);
+                });
+        }
+
+        // Initial render
+        renderTabs();
+        renderCards();
+    </script>
+</body>
+
+</html>
