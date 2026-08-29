@@ -6,24 +6,16 @@ const formSchema = columns.map(column => ({
     head: {
         isControl: true,
         text: column,
-        theme: "dark-bold",
+        theme: "default-better-focus",
         controlType: "label"
     },
     body: {
         isControl: true,
         value1: "body",
-        theme: "light-sm",
+        theme: "default-better-focus",
         controlType: "input",
         "ks-enter-as-tab": true
     }
-}));
-
-const formSchema1 = columns.map(column => ({
-    theme: "split-30-70",
-    order: "label,input",
-    labelText: column,
-    inputType: "text",
-    inputPlaceholder: `Enter value for field ${column}...`
 }));
 
 // Instantiate the new parent composite
@@ -50,15 +42,7 @@ form.config = {
             isControl: true,
             text: "Save",
             controlType: "button",
-            theme: "dark",
-            class1: "px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-        },
-        {
-            isControl: true,
-            text: "Cancel",
-            controlType: "button",
-            theme: "dark",
-            class1: "px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+            theme: "default-better-focus"
         }]
     },
     foot1: {

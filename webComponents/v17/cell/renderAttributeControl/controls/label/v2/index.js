@@ -48,17 +48,29 @@ const getLabelAttributes = ({ inKsAttributes }) => {
 };
 
 const startFunc = ({ inKsAttributes }) => {
-    const localKsAttributes = inKsAttributes || {};
+    const localKsAttributes = inKsAttributes;
+    const label = document.createElement("label");
 
+    // 1. Text Content
+    label.textContent = localKsAttributes?.["text"] || localKsAttributes?.["labelText"] || localKsAttributes?.text || localKsAttributes?.labelText || "";
+
+    // 2. Extract Attribute Configurations as Objects
     const localCommonAttrs = getCommonAttributes({ inKsAttributes: localKsAttributes });
     const localLabelAttrs = getLabelAttributes({ inKsAttributes: localKsAttributes });
 
-    return {
-        tagName: "label",
-        textContent: localKsAttributes["text"] || localKsAttributes["labelText"] || "",
-        attributes: { ...localCommonAttrs, ...localLabelAttrs },
-        events: {}
-    };
+    // 3. Combine Attributes
+    const localFinalAttrs = { ...localCommonAttrs, ...localLabelAttrs };
+
+    // 4. Apply Attributes to DOM Element
+    Object.entries(localFinalAttrs).forEach(([attrName, val]) => {
+        if (attrName === "class") {
+            label.className = val;
+        } else {
+            label.setAttribute(attrName, val);
+        }
+    });
+
+    return label;
 };
 
 export default startFunc;

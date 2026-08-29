@@ -1,3 +1,5 @@
+import { attachEvents } from "../../attachEvents.js";
+
 const COMMON_ATTRIBUTES = {
     "aria-described-by": "aria-describedby",
     "aria-label": "aria-label",
@@ -49,33 +51,45 @@ const getButtonAttributes = ({ inKsAttributes }) => {
     return localResult;
 };
 
-const getEvents = ({ inKsAttributes }) => {
+const createElement = ({ inKsAttributes }) => {
     const localKsAttributes = inKsAttributes || {};
-    const localEvents = {};
 
-    localEvents["click"] = (event) => {
-        console.log("Button clicked event : ", event);
-    };
+    const element = document.createElement("button");
 
-    return localEvents;
+    // Set basic properties
+    element.textContent = localKsAttributes["text"] || localKsAttributes["labelText"] || localKsAttributes["text"] || "";
+    element.disabled = localKsAttributes["disabled"] === true || localKsAttributes["disabled"] === "true";
+
+    return element;
 };
 
 export const renderButton = ({ inKsAttributes } = {}) => {
     const localKsAttributes = inKsAttributes || {};
 
+    // 1. Create Element
+    const button = createElement({ inKsAttributes: localKsAttributes });
+
+    // 2. Extract Attribute Configurations as Objects
     const localCommonAttrs = getCommonAttributes({ inKsAttributes: localKsAttributes });
     const localButtonAttrs = getButtonAttributes({ inKsAttributes: localKsAttributes });
-    const localEvents = getEvents({ inKsAttributes: localKsAttributes });
 
-    return {
-        tagName: "button",
-        textContent: localKsAttributes["text"] || localKsAttributes["labelText"] || "",
-        properties: {
-            disabled: localKsAttributes["disabled"] === true || localKsAttributes["disabled"] === "true"
-        },
-        attributes: { ...localCommonAttrs, ...localButtonAttrs },
-        events: localEvents
-    };
+    // 3. Combine Attributes
+    const localFinalAttrs = { ...localCommonAttrs, ...localButtonAttrs };
+
+    // 4. Apply Attributes to DOM Element
+    Object.entries(localFinalAttrs).forEach(([attrName, val]) => {
+        if (attrName === "class") {
+            button.className = val;
+        } else {
+            button.setAttribute(attrName, val);
+        }
+    });
+
+    // 5. Attach Events
+    attachEvents({ inInput: button, inKsAttributes: localKsAttributes });
+
+    // 6. Return the element
+    return button;
 };
 
 export default renderButton;

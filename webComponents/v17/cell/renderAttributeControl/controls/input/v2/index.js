@@ -1,3 +1,5 @@
+import { attachEvents } from "../../attachEvents.js";
+
 const COMMON_ATTRIBUTES = {
     "aria-described-by": "aria-describedby",
     "aria-label": "aria-label",
@@ -55,47 +57,35 @@ const getInputAttributes = ({ inKsAttributes }) => {
     return localResult;
 };
 
-const getEvents = ({ inKsAttributes }) => {
-    const localKsAttributes = inKsAttributes || {};
-    const localEvents = {};
-
-    const rawVal = localKsAttributes?.["enter-as-tab"] ?? localKsAttributes?.enterAsTab;
-    const isEnterAsTab = rawVal === "true" || rawVal === true;
-
-    if (isEnterAsTab) {
-        localEvents["keydown"] = (event) => {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                const inputs = Array.from(document.querySelectorAll("input"));
-                const currentIndex = inputs.indexOf(event.currentTarget);
-
-                if (currentIndex !== -1 && currentIndex < inputs.length - 1) {
-                    inputs[currentIndex + 1].focus();
-                }
-            }
-        };
-    }
-
-    return localEvents;
-};
-
 const startFunc = ({ inKsAttributes }) => {
     const localKsAttributes = inKsAttributes || {};
+    const input = document.createElement("input");
 
+    // 1. Basic Input properties
+    input.type = localKsAttributes["type"] || localKsAttributes["inputType"] || "text";
+    input.value = localKsAttributes["value"] || "";
+    input.placeholder = localKsAttributes["place-holder"] || localKsAttributes["placeholder"] || localKsAttributes["inputPlaceholder"] || "";
+
+    // 2. Extract Attribute Configurations as Objects
     const localCommonAttrs = getCommonAttributes({ inKsAttributes: localKsAttributes });
     const localInputAttrs = getInputAttributes({ inKsAttributes: localKsAttributes });
-    const localEvents = getEvents({ inKsAttributes: localKsAttributes });
 
-    return {
-        tagName: "input",
-        properties: {
-            type: localKsAttributes["type"] || localKsAttributes["inputType"] || "text",
-            value: localKsAttributes["value"] || "",
-            placeholder: localKsAttributes["place-holder"] || localKsAttributes["placeholder"] || localKsAttributes["inputPlaceholder"] || ""
-        },
-        attributes: { ...localCommonAttrs, ...localInputAttrs },
-        events: localEvents
-    };
+    // 3. Combine Attributes
+    const localFinalAttrs = { ...localCommonAttrs, ...localInputAttrs };
+
+    // 4. Apply Attributes to DOM Element
+    Object.entries(localFinalAttrs).forEach(([attrName, val]) => {
+        if (attrName === "class") {
+            input.className = val;
+        } else {
+            input.setAttribute(attrName, val);
+        }
+    });
+
+    // 5. Attach Events (as-is)
+    attachEvents({ inInput: input, inKsAttributes: localKsAttributes });
+
+    return input;
 };
 
 export default startFunc;
