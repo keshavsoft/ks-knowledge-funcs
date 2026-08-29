@@ -20,6 +20,8 @@ export const captureJsConfig = ({ inContext }) => {
     const localContext = inContext;
     if (!localContext) return {};
 
+    // console.log("inContext config : ", inContext.config);
+
     return localContext.config || localContext._config || {};
 };
 

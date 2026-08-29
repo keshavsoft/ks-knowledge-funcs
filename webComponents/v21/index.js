@@ -37,6 +37,7 @@ class KsWrapperForm extends HTMLElement {
     render() {
         const finalConfig = pullAttributes(this);
         const wrapperElement = resolveSpec({ inConfig: finalConfig });
+        // console.log("finalConfig : ", finalConfig);
 
         if (wrapperElement) {
             this.replaceChildren(wrapperElement);
@@ -50,13 +51,13 @@ class KsWrapperForm extends HTMLElement {
 registerComponent({
     inComponentClass: KsTableCellContent,
     inTagName: "ks-cell-base",
-    inVersion: "v20",
+    inVersion: "v21",
     inNamespaceKey: "classes"
 });
 
 registerComponent({
     inComponentClass: KsWrapperForm,
     inTagName: "ks-wrapper-base",
-    inVersion: "v20",
+    inVersion: "v21",
     inNamespaceKey: "composite"
 });
