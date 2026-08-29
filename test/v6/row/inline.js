@@ -1,10 +1,18 @@
-console.log("finalConfig :-------- ");
+// console.log("finalConfig :-------- ");
 
 const inLineDivId = document.getElementById("inLineDivId");
 
 const form = document.createElement("ks-wrapper-base");
 
 form.config = {
+    isControl: true,
+    text: "column Name",
+    theme: "default-better-focus",
+    controlType: "button"
+};
+
+form.config1 = {
+    is3Part: true,
     head: {
         isControl: true,
         text: "column Name",
@@ -19,6 +27,6 @@ form.config = {
     }
 };
 
-form.setAttribute("ks-theme", "stacked");
+form.setAttribute("ks-theme", "inline");
 
 inLineDivId.appendChild(form);
