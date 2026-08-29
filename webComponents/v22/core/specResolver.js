@@ -15,7 +15,31 @@ const controlRenderers = {
 
 export const resolveSpec = ({ inConfig }) => {
     const localConfig = inConfig || {};
-    console.log("localConfig : ", localConfig);
+    // console.log("localConfig : ", localConfig);
+    // 4. Control Node (Leaf)
+    const controlType = localConfig["control-type"] || localConfig["controlType"];
+    if ((localConfig.isControl || controlType) && controlRenderers[controlType || "input"]) {
+        const resolvedType = controlType || "input";
+        const renderer = controlRenderers[resolvedType];
+        const spec = renderer({ inKsAttributes: localConfig });
+
+        const themeName = localConfig["theme"] || "default";
+        const themeClasses = themes[themeName]?.[resolvedType];
+
+        return domElementBuilder({
+            inSpec: spec,
+            inControlType: resolvedType,
+            inThemeName: themeName,
+            inClassList: themeClasses
+        });
+    }
+
+    return null;
+};
+
+export const resolveSpec1 = ({ inConfig }) => {
+    const localConfig = inConfig || {};
+    // console.log("localConfig : ", localConfig);
 
     // 1. Composite Wrapper Node (isWrapper: true with elements array)
     if (localConfig.isWrapper && Array.isArray(localConfig?.elements)) {
@@ -90,7 +114,7 @@ export const resolveSpec = ({ inConfig }) => {
         const sectionKeys = Object.keys(localConfig);
 
         const themeName = sectionKeys["theme"] || "default";
-        console.log("sectionKeys : ", themeName, sectionKeys);
+        // console.log("sectionKeys : ", themeName, sectionKeys);
 
         if (sectionKeys.length > 0) {
             const sectionChildren = sectionKeys.map(key => {

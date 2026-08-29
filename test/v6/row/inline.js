@@ -5,10 +5,10 @@ const inLineDivId = document.getElementById("inLineDivId");
 const form = document.createElement("ks-wrapper-base");
 
 form.config = {
+    controlType: "label",
     isControl: true,
     text: "column Name",
     theme: "default-better-focus",
-    controlType: "button"
 };
 
 form.config1 = {
