@@ -1,7 +1,7 @@
 import { renderButton } from "./controls/button/renderButton.js";
 import { renderCheckbox } from "./controls/renderCheckbox.js";
-import { renderInput } from "./controls/renderInput.js";
-import { renderLabel } from "./controls/renderLabel.js";
+import renderInput from "./controls/input/v1/index.js";
+import renderLabel from "./controls/label/v2/index.js";
 
 import themes from "../constants/themes.json" with { type: "json" };
 
@@ -19,8 +19,7 @@ export const renderAttributeControl = (ksAttributes) => {
     if (!renderer) return null;
 
     // 1. Get the raw element from the renderer
-    const element = renderer(ksAttributes);
-    // console.log("ksAttributes : ", ksAttributes);
+    const element = renderer({ inKsAttributes: ksAttributes });
 
     // 2. Determine the theme (defaults to "default")
     const themeName = ksAttributes["theme"] || "default";

@@ -6,6 +6,6 @@ export const createElement = (ksAttributes) => {
     };
 
     button.textContent = ksAttributes["text"] || "";
-    
+
     return button;
 };
